@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termine - RV Hard</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/navigation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div id="navigation-container"></div>
+    <main class="termine-seite">
+        <section class="container">
+            <h1>Unsere Termine</h1>
+            <div id="event-liste">
+                </div>
+        </section>
+    </main>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/rv_hard/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/radvereinhard/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2024 RV Hard</p>
+        <p><a href="/impressum.html">Impressum</a> | <a href="/datenschutz.html">Datenschutz</a></p>
+    </footer>
+
+    <script src="/assets/nav.js"></script>
+ <script>
+               
+
+        // Event-Daten (könntest du aus einer JSON-Datei oder einem CMS laden)
+        const events = [
+    {
+        id: 1,
+        datum: "2025-04-25", // ISO-Format
+        zeit: "19:00",
+        titel: "JHV Spannrahmen",
+        beschreibung: "Jahreshauptversammlung des RV Hard. Obmannteam wird gewählt. Vorstand wird entlastet. Alle Mitglieder sind herzlich eingeladen.",
+        link: null,
+        ort: "Spannrahmen, In der Wirke 2, Hard"
+    },
+    {
+        id: 2,
+        datum: "2025-03-12", // ISO-Format (Startdatum)
+        zeit: "0:00-23:59",
+        titel: "Vereinsradwoche Emilia Romagna",
+        beschreibung: "Eine Woche Radfahren in der Emilia Romagna. Mit einem Hotel in Riccione direkt am Meer und täglichen Rennrad und MTB Touren.",
+        link: null,
+        ort: "Hotel Poker, Riccione, Italien"
+        
+    },
+    {
+        id: 3,
+        datum: "2025-05-31", // ISO-Format
+        zeit: "9:00-18:00",
+        titel: "Nightrace 2025",
+        beschreibung: "Viele spannenden Rennen von allen Alterkategorien mit dem Finale, dem traditionellen Harder MTB Nightrace.",
+        link: "/Events/nightrace/dachbau-schaffer-nightrace-2025.html",
+        ort: "Stedepark, Hard"
+    },
+    {
+        id: 4,
+        datum: "2025-07-05", // ISO-Format (Startdatum)
+        zeit: "9:00-15:00",
+        titel: "Summer Bike Series 2025",
+        beschreibung: "Summer Bike Series 2025 mit Bergrennen in Buch, Kriterium am Kangarm Areal und Zeitfahren in Fussach.",
+        link: "/Events/sbs/Summer-Bike-Series-2025.html",
+        ort: "Wolfurt-Buch(Bergrennen), Kangarm Areal, Hard(Kriterium), Camping Rohrspitz-Sportanlage Müss, Fußach(Zeitfahren)"
+    },
+    // Füge hier weitere Events im ISO-Format hinzu
+];
+
+        const eventListeDiv = document.getElementById('event-liste');
+
+        events.forEach(event => {
+    const eventCard = document.createElement('div');
+    eventCard.classList.add('modern-event-card');
+
+    const titelElement = document.createElement('h3'); // Verwende <h3> für den Haupttitel
+    titelElement.textContent = event.titel;
+
+    const datumElement = document.createElement('p'); // Verwende <p> für Datum und Zeit
+    const date = new Date(event.datum);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const year = date.getFullYear();
+    datumElement.textContent = `${day}.${month}.${year} ${event.zeit || ''}`;
+    datumElement.classList.add('event-date-time'); // Füge eine Klasse für spezifisches Styling hinzu
+
+    const beschreibungElement = document.createElement('p');
+    beschreibungElement.textContent = event.beschreibung;
+
+    eventCard.appendChild(titelElement); // Titel zuerst
+    eventCard.appendChild(datumElement); // Datum und Zeit darunter
+    eventCard.appendChild(beschreibungElement);
+
+    if (event.link) {
+        const linkButton = document.createElement('a');
+        linkButton.href = event.link;
+        linkButton.classList.add('event-button', 'weiterlesen-button');
+        linkButton.textContent = 'Mehr Infos';
+        eventCard.appendChild(linkButton);
+    }
+    if (event.ort) { // Überprüfe, ob ein Ort vorhanden ist
+        const ortElement = document.createElement('p');
+        ortElement.classList.add('event-location'); // Füge eine CSS-Klasse für Styling hinzu
+        ortElement.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${event.ort}`; // Optional mit Icon
+        eventCard.appendChild(ortElement);
+    }
+
+    const kalenderButton = document.createElement('button');
+    kalenderButton.classList.add('event-button', 'kalender-button');
+    kalenderButton.innerHTML = '<i class="fa-regular fa-calendar-plus"></i> Zum Kalender hinzufügen';
+    kalenderButton.addEventListener('click', () => {
+        addToCalendar(event);
+    });
+    eventCard.appendChild(kalenderButton);
+
+    eventListeDiv.appendChild(eventCard);
+});
+
+function addToCalendar(event) {
+    let timePart = '';
+    if (event.zeit && event.zeit.includes('-')) {
+        timePart = event.zeit.split('-')[0].trim();
+    } else if (event.zeit && event.zeit !== 'ganztags' && event.zeit !== 'halbtags') {
+        timePart = event.zeit;
+    }
+
+    const dateString = event.datum;
+    const timeString = timePart ? timePart : '00:00'; // Fallback auf 00:00
+
+    // Erstelle ein Date-Objekt, indem du die Komponenten separat übergibst (in lokaler Zeit)
+    const [year, month, day] = dateString.split('-').map(Number);
+    const [hours, minutes] = timeString.split(':').map(Number);
+    const date = new Date(year, month - 1, day, hours, minutes); // Monat ist 0-basiert
+
+    const utcYear = date.getUTCFullYear();
+    const utcMonth = (date.getUTCMonth() + 1).toString().padStart(2, '0');
+    const utcDay = date.getUTCDate().toString().padStart(2, '0');
+    const utcHours = (date.getUTCHours()).toString().padStart(2, '0');
+    const utcMinutes = (date.getUTCMinutes()).toString().padStart(2, '0');
+
+    const startTime = `${utcYear}${utcMonth}${utcDay}T${utcHours}${utcMinutes}00Z`;
+    const endTime = `${utcYear}${utcMonth}${utcDay}T${(parseInt(utcHours) + 1).toString().padStart(2, '0')}${utcMinutes}00Z`;
+
+    const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&dates=${startTime}/${endTime}&text=${encodeURIComponent(event.titel)}&details=${encodeURIComponent(event.beschreibung)}&location=${encodeURIComponent(event.ort || '')}&sf=true&output=xml`;
+
+    window.open(googleCalendarUrl, '_blank');
+}
+    </script>
+    <script src="/assets/navigation-loader.js" defer></script>
+    <script src="/assets/header-scroll.js" defer></script>
+</body>
+
+</html>

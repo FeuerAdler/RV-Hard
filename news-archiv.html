@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News Archiv - RV Hard</title>
+    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="/assets/news/news.css" />
+</head>
+<body>
+    <header>
+        <nav id="navigation-container"></nav>
+    </header>
+
+    <main class="news-page">
+        <section class="container">
+            <h1 class="section-title">News Archiv</h1>
+
+            <div class="filter-container">
+                <select id="year-filter" class="year-filter">
+                    <option value="all">Alle Jahre</option>
+                </select>
+            </div>
+            <div id="news-archive-list" class="news-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/rv_hard/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/radvereinhard/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2025 RV Hard</p>
+        <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a></p>
+    </footer>
+
+    <script src="/assets/navigation-loader.js"></script>
+    <script src="/assets/nav.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadNavigation();
+            loadNewsArchive();
+        });
+
+        async function loadNavigation() {
+            try {
+                const response = await fetch('/assets/navigationneu.html');
+                if (!response.ok) throw new Error(`Status: ${response.status}`);
+                document.getElementById('navigation-container').innerHTML = await response.text();
+                initNavigationMenu();
+            } catch (error) {
+                console.error('Fehler beim Laden der Navigation:', error);
+            }
+        }
+
+        async function loadNewsArchive() {
+            const container = document.getElementById('news-archive-list');
+            const yearFilter = document.getElementById('year-filter');
+
+            try {
+                const response = await fetch('/data/News/news.json');
+                const news = await response.json();
+
+                // Sortieren nach Datum absteigend
+                news.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+                // Jahre für Filter sammeln
+                const years = [...new Set(news.map(n => new Date(n.date).getFullYear()))].sort((a, b) => b - a);
+                years.forEach(year => {
+                    const option = document.createElement('option');
+                    option.value = year;
+                    option.textContent = year;
+                    yearFilter.appendChild(option);
+                });
+
+                function displayNews(filterYear = 'all') {
+                    container.innerHTML = '';
+                    const filtered = filterYear === 'all' ? news : news.filter(n => new Date(n.date).getFullYear() == filterYear);
+
+                    filtered.forEach(article => {
+                        const date = new Date(article.date).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
+                        const newsEl = document.createElement('article');
+                        newsEl.className = 'news-item';
+
+                        newsEl.innerHTML = `
+                            ${article.image ? `<img src="${article.image}" alt="${article.title}" class="news-image">` : ''}
+                            <div class="news-content">
+                                <h3>${article.title}</h3>
+                                <div class="news-meta">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    <span class="news-date">${date}</span> |
+                                    <span class="news-author">${article.author || ''}</span>
+                                </div>
+                                <p>${article.content}</p>
+                                <a class="weiterlesen-button" href="${article.link || `news/${article.slug}.html`}">Weiterlesen</a>
+                            </div>
+                        `;
+                        container.appendChild(newsEl);
+                    });
+                }
+
+                displayNews();
+                yearFilter.addEventListener('change', () => displayNews(yearFilter.value));
+
+            } catch (error) {
+                console.error('Fehler beim Laden der Nachrichten:', error);
+                container.textContent = 'Fehler beim Laden der Nachrichten.';
+            }
+        }
+    </script>
+    <script src="/assets/header-scroll.js" defer></script>
+</body>
+</html>
