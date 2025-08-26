@@ -24,6 +24,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 1rem;
+    padding-top: 70px;
     /* Aktuelle Größe (Standard ist oft 16px, was 1rem entspricht) */
 }
 
@@ -1181,5 +1182,6 @@ footer a {
     /* Größe der Icons */
     transition: color 0.3s ease;
 }
+
 
 /*cssminifier.com/*
