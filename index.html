@@ -82,41 +82,73 @@
         }
     </style>
     <style>
-        .next-events ul {
-            list-style: none;
-            padding: 0;
+        /* Events */
+        .events {
+        text-align: center;
+        margin: 4rem auto;
+        max-width: 700px;
+        }
+        .events h2 {
+        margin-bottom: 1rem;
+        }
+        .events .event-teaser {
+        font-size: 1.2rem;
+        color: #333;
         }
 
-        .next-events li {
-            margin: 0.5rem 0;
-            font-size: 1rem;
+        /* Fakten */
+        /* Fakten */
+        .fakten {
+        text-align: center;
+        margin: 4rem auto;
+        padding: 0 1rem;
         }
 
-        .verein-fakten .facts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            text-align: center;
+        .fakten h2 {
+        margin-bottom: 2rem;
+        font-size: 2rem;
         }
 
-        .fact-number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #f4b400;
-            /* Vereinsgelb */
+        .fakten-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
         }
 
-        .verein-galerie .galerie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 0.5rem;
+        .fakt {
+        background: #f9f9f9;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .verein-galerie img {
-            width: 100%;
-            border-radius: 10px;
-            object-fit: cover;
+        .fakt:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
         }
+
+        .fakt .icon {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+        }
+
+        .fakt h3 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #111;
+        }
+
+        .fakt p {
+        margin: 0;
+        font-size: 1rem;
+        color: #555;
+        }
+
+
 
         .cta-mitglied {
             text-align: center;
@@ -296,44 +328,44 @@
             })();
         </script>
 
-        <!-- Nächste Termine -->
-        <section class="next-events">
-            <h2>Nächste Termine</h2>
-            <ul>
-                <li><i class="fa-regular fa-calendar-days"></i> 10.09.2025 – Vereinsausfahrt Sonntag</li>
-                <li><i class="fa-regular fa-calendar-days"></i> 15.09.2025 – Techniktraining Jugend</li>
-                <li><i class="fa-regular fa-calendar-days"></i> 20.09.2025 – Vereinsmeisterschaft</li>
-            </ul>
-            <a href="/termine.html" class="weiterlesen-button">Alle Termine</a>
-        </section>
+        <!-- EVENTS / TEASER -->
+            <section class="events">
+            <h2>Nächste Events</h2>
+            <p class="event-teaser">
+                Du möchtest beim nächsten Event dabei sein?<br>
+                Folge uns auf <a href="https://www.instagram.com/rv_hard/" target="_blank">Instagram</a> oder schau regelmäßig hier vorbei!
+            </p>
+            </section>
 
-        <!-- Verein in Zahlen -->
-        <section class="verein-fakten">
-            <h2>RV Hard in Zahlen</h2>
-            <div class="facts-grid">
-                <div class="fact">
-                    <span class="fact-number">150+</span>
-                    <p>Mitglieder</p>
+
+            <!-- FAKTEN -->
+            <section class="fakten">
+            <h2>Unsere Fakten</h2>
+            <div class="fakten-grid">
+                <div class="fakt">
+                <div class="icon">👥</div>
+                <h3>250+</h3>
+                <p>Mitglieder</p>
                 </div>
-                <div class="fact">
-                    <span class="fact-number">1925</span>
-                    <p>Gründungsjahr</p>
+                <div class="fakt">
+                <div class="icon">🏅</div>
+                <h3>100+</h3>
+                <p>Jahre Tradition</p>
                 </div>
-                <div class="fact">
-                    <span class="fact-number">40%</span>
-                    <p>Jugendanteil</p>
+                <div class="fakt">
+                <div class="icon">👶</div>
+                <h3>50+</h3>
+                <p>Kinder & Jugendliche</p>
                 </div>
-                <div class="fact">
-                    <span class="fact-number">10+</span>
-                    <p>Events pro Jahr</p>
+                <div class="fakt">
+                <div class="icon">🚴</div>
+                <h3>3</h3>
+                <p>Sparten: Rennrad, MTB, Triathlon</p>
                 </div>
             </div>
-        </section>
+            </section>
 
-        <section class="verein-galerie">
-            <h2>Einblicke ins Vereinsleben</h2>
-            <div class="taggbox" style="max-width:600px;width:90%;height:100%;overflow:auto;" data-widget-id="297917" data-website="1"></div><script src="https://widget.taggbox.com/embed.min.js" type="text/javascript"></script>
-        </section>
+
 
 
         <!-- Call to Action -->
@@ -348,7 +380,7 @@
             <h2>Immer informiert bleiben</h2>
             <p>Melde dich zu unserem Newsletter an und verpasse keine Neuigkeiten mehr!</p>
             <!-- Beispiel Webling Formular-Einbindung -->
-            <iframe src="https://example.webling.ch/newsletter-formular"
+            <iframe src="https://rv-hard.webling.ch/newsletter-formular"
                 style="border:0; width:100%; max-width:600px; height:400px;" loading="lazy"></iframe>
         </section>
 
@@ -469,9 +501,4 @@
 
 </body>
 
-
 </html>
-
-
-
-
