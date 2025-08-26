@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unser Verein - RV Hard</title>
+    <link rel="stylesheet" href="/assets/style.css">
+    <link rel="stylesheet" href="/assets/navigation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Synthese:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Beispielstil für cite, falls Sie es verwenden möchten */
+        cite {
+            font-style: italic;
+            color: #333;
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        p {
+            margin-bottom: 1em; 
+            line-height: 1.6; 
+        }
+        p.jahr {
+            font-weight: bold;
+            margin-top: 1.5em; 
+            margin-bottom: 0.5em; 
+        }
+        .timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: #ffc107; /* gelbe Linie */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px; /* Linie exakt mittig */
+}
+
+/* Gemeinsame Styles */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 40px;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+.timeline-content {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+
+/* Mobile: Linie nach links */
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 20px;
+  }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 60px;
+    padding-right: 25px;
+    text-align: left;
+  }
+
+  .timeline-item.right {
+    left: 0;
+  }
+
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="navigation-container">
+        </div>
+    </header>
+
+     <main class="verein-container">
+        <section class="geschichte-abschnitt">
+            <h2>Unsere Geschichte</h2>
+            <p>
+                Willkommen auf der Seite des RV Hard! Hier möchten wir Ihnen einen tiefen
+                Einblick in die bewegte und facettenreiche Geschichte unseres Vereins geben.
+            </p>
+        <div class="timeline">
+        <!-- Ereignisse -->
+                <div class="timeline-item left">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1922</h3>
+                <p>Gründung des Radfahrervereins „Falke“ Hard im Gasthaus Löwen durch 24 radsportbegeisterte Männer.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1923</h3>
+                <p>Fahnenweihe am 19. August trotz extremer Inflation. Erste Vereinsrennen wie Langsamfahrten und Hindernisrennen mit Sachpreisen (Fett, Brot).</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1930er</h3>
+                <p>Der Verein übersteht die Weltwirtschaftskrise und wächst stetig weiter.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1947</h3>
+                <p>Nach Kriegsende Wiedergründung am 6. August. Trainings finden erneut im Gasthof Löwen statt.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1949</h3>
+                <p>Neuer Ausschuss unter Obmann Oskar Köhlmeier. Neue Statuten werden verabschiedet.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1950</h3>
+                <p>Anton Fürst wird Vorarlberger Straßenmeister – der erste große Titel des Vereins.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1973–1978</h3>
+                <p>Zwölf Vorarlberger Meistertitel auf Straße, Berg und Bahn. 1976 wird der Namenszusatz „Falke“ gestrichen, um politische Unabhängigkeit zu betonen.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1980er–1990er</h3>
+                <p>Die „Harder Radsporttage“ entwickeln sich zu bekannten Großveranstaltungen. Jugend- und Hobbyarbeit wird intensiviert.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>1990er</h3>
+                <p>Talente wie Markus Ghesla feiern nationale und internationale Erfolge.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>2011</h3>
+                <p>Fusion mit RV DJ’s Bikeshop → Gründung des „ÖAMTC RV DJ’s Bikeshop Simplon Hard“. Stärkung der Jugendarbeit.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item left">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>2010er</h3>
+                <p>Erweiterung um die Sparte Triathlon. Bau eines modernen Fahrradübungsplatzes mit Unterstützung der Gemeinde.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item right">
+                <span class="timeline-point"></span>
+                <div class="timeline-content">
+                <h3>Heute</h3>
+                <p>Über 300 Mitglieder. Sparten Rennrad, Mountainbike, Triathlon und E-Bike. Veranstaltungen wie XCO Nightrace und Summerbike-Series prägen den Radsportkalender.</p>
+                </div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/rv_hard/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/radvereinhard/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p>&copy; 2024 RV Hard</p>
+        <p><a href="/impressum.html">Impressum</a> | <a href="/datenschutz.html">Datenschutz</a></p>
+    </footer>
+
+    <script src="/assets/navigation-loader.js" defer></script>
+<script src="/assets/nav.js"></script>
+<script src="/assets/header-scroll.js" defer></script>
+</body>
+
+</html>
