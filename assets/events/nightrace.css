@@ -147,3 +147,37 @@
 .ergebnisse-section {
     margin-bottom: 3rem;
 }
+@media (max-width: 600px) {
+  .zeitplan-tabelle thead {
+    display: none; /* Kopf ausblenden */
+  }
+
+  .zeitplan-tabelle, 
+  .zeitplan-tabelle tbody, 
+  .zeitplan-tabelle tr, 
+  .zeitplan-tabelle td {
+    display: block;
+    width: 100%;
+  }
+
+  .zeitplan-tabelle tr {
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+
+  .zeitplan-tabelle td {
+    text-align: left;
+    padding: 0.5rem;
+    position: relative;
+  }
+
+  .zeitplan-tabelle td::before {
+    content: attr(data-label); /* zieht Überschrift rein */
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #ffc107;
+  }
+}
