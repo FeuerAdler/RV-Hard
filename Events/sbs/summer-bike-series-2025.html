@@ -20,7 +20,67 @@
 
   <main class="nightrace-container">
     <h1>Summer Bike Series 2025</h1>
+    <section class="danke-section">
+            <h1>Danke für eure Teilnahme!</h1>
+            <p>Die Summer Bike Series 2024 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen.</p>
+     </section>
 
+        <section class="anmeldung-section">
+          <h2>Anmeldung & Ergebnisse</h2>
+          <p>Hier findest du Live-Ergebnisse und Teilnehmerlisten der einzelnen Bewerbe:</p>
+
+          <div class="raceresult-embed-container" data-src="https://my.raceresult.com/338678/registration">
+            <h2>Kriterium</h2>
+            <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+                Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
+            </div>
+        </div>
+
+        <div class="raceresult-embed-container" data-src="https://my.raceresult.com/346302/registration">
+            <h2>Einzelzeitfahren</h2>
+            <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+                Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
+            </div>
+        </div>
+
+        <div class="raceresult-embed-container" data-src="https://my.raceresult.com/346365/registration">
+            <h2>Bergrennen</h2>
+            <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+                Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
+            </div>
+        </div>
+
+        <script>
+            function loadAllRaceresultIframes() {
+                document.querySelectorAll('.raceresult-embed-container').forEach(container => {
+                    const src = container.getAttribute('data-src');
+                    container.querySelector('.raceresult-placeholder').remove(); // Platzhalter entfernen
+                    const iframe = document.createElement('iframe');
+                    iframe.src = src;
+                    iframe.width = "100%";
+                    iframe.height = "700px";
+                    iframe.frameBorder = "0";
+                    container.appendChild(iframe);
+                });
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                // Prüfen, ob Cookies schon akzeptiert wurden
+                if (localStorage.getItem("cookieAccepted") === "true") {
+                    loadAllRaceresultIframes();
+                }
+            });
+
+            // Wenn Nutzer Cookies gerade akzeptiert
+            const cookieBtn = document.getElementById("cookie-ok-btn");
+            if (cookieBtn) {
+                cookieBtn.addEventListener("click", () => {
+                    loadAllRaceresultIframes();
+                });
+            }
+        </script>
+
+        </section>
     <section class="info-section">
       <h2>Allgemeine Informationen</h2>
       <p>
@@ -64,27 +124,6 @@
         📄 Ausschreibung (PDF)
       </a>
     </section>
-
-    <section class="anmeldung-section">
-  <h2>Anmeldung & Ergebnisse</h2>
-  <p>Hier findest du Live-Ergebnisse und Teilnehmerlisten der einzelnen Bewerbe:</p>
-
-  <div class="raceresult-embed-container">
-    <h2>Kriterium</h2>
-    <iframe src="https://my.raceresult.com/338678/registration" width="100%" height="700px" frameborder="0"></iframe>
-  </div>
-
-  <div class="raceresult-embed-container">
-    <h2>Einzelzeitfahren</h2>
-    <iframe src="https://my.raceresult.com/346302/registration" width="100%" height="700px" frameborder="0"></iframe>
-  </div>
-
-  <div class="raceresult-embed-container">
-    <h2>Bergrennen</h2>
-    <iframe src="https://my.raceresult.com/346365/registration" width="100%" height="700px" frameborder="0"></iframe>
-  </div>
-</section>
-
 
     <section class="pdf-section">
       <h3>Vergangene Serien</h3>

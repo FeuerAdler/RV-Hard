@@ -25,17 +25,40 @@
         <h1>Dachbau Schaffer Nightrace 2025</h1>
         <section class="danke-section">
             <h1>Danke für eure Teilnahme!</h1>
-            <p>Das Dachbau Schaffer Nightrace 2024 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen für diesen unvergesslichen Tag im Stedepark.</p>
+            <p>Das Dachbau Schaffer Nightrace 2025 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen für diesen unvergesslichen Tag im Stedepark.</p>
         </section>
 
         <section class="anmeldung-section">
-            <h2>Anmeldung und Ergebnisse</h2>
-            <p>Die Anmeldung für das Dachbau Schaffer Nightrace 2025 erfolgt direkt hier:</p>
+    <h2>Anmeldung und Ergebnisse</h2>
+    <p>Die Ergebnisse für das Dachbau Schaffer Nightrace 2025 findest du hier:</p>
 
-            <div class="raceresult-embed-container">
-                <iframe src="https://my.raceresult.com/337287/results/" width="100%" height="700px" frameborder="0"></iframe>
-                </div>
-            </section>
+    <div class="raceresult-embed-container" id="raceresult-container">
+        <!-- Platzhalter wird angezeigt, bis Cookies akzeptiert -->
+        <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+            Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
+    </div>
+</section>
+
+<script>
+    function loadRaceresult() {
+        const container = document.getElementById("raceresult-container");
+        container.innerHTML = `<iframe src="https://my.raceresult.com/337287/results/" width="100%" height="700px" frameborder="0"></iframe>`;
+    }
+
+    // Prüfen, ob Cookies schon akzeptiert wurden
+    document.addEventListener("DOMContentLoaded", () => {
+        if (localStorage.getItem("cookieAccepted") === "true") {
+            loadRaceresult();
+        }
+    });
+
+    // Wenn Nutzer Cookies gerade akzeptiert
+    document.getElementById("cookie-ok-btn").addEventListener("click", () => {
+        loadRaceresult();
+    });
+</script>
+
 
         <section class="info-section">
             <h2>Allgemeine Informationen</h2>
