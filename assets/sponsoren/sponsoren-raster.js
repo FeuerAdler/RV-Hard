@@ -6,6 +6,10 @@ function createGridLines() {
     sponsorenGrid.querySelectorAll('.grid-line').forEach(line => line.remove());
 
     const sponsorLogos = sponsorenGrid.querySelectorAll('.sponsor-logo');
+
+    // Mobile Check
+    if (window.innerWidth <= 768) return; // Auf Mobile keine Linien erstellen
+
     const gridStyle = getComputedStyle(sponsorenGrid);
     const gap = parseFloat(gridStyle.getPropertyValue('gap'));
     const numColumns = parseInt(gridStyle.getPropertyValue('grid-template-columns').split(' ').length);

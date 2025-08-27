@@ -21,6 +21,8 @@
     grid-auto-rows: auto; /* Oder eine feste Höhe, z.B. 150px */
 }
 
+
+
 .sponsor-logo {
     display: flex;
     justify-content: center;
