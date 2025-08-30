@@ -84,68 +84,70 @@
     <style>
         /* Events */
         .events {
-        text-align: center;
-        margin: 4rem auto;
-        max-width: 700px;
+            text-align: center;
+            margin: 4rem auto;
+            max-width: 700px;
         }
+
         .events h2 {
-        margin-bottom: 1rem;
+            margin-bottom: 1rem;
         }
+
         .events .event-teaser {
-        font-size: 1.2rem;
-        color: #333;
+            font-size: 1.2rem;
+            color: #333;
         }
 
         /* Fakten */
         /* Fakten */
         .fakten {
-        text-align: center;
-        margin: 4rem auto;
-        padding: 0 1rem;
+            text-align: center;
+            margin: 4rem auto;
+            padding: 0 1rem;
         }
 
         .fakten h2 {
-        margin-bottom: 2rem;
-        font-size: 2rem;
+            margin-bottom: 2rem;
+            font-size: 2rem;
         }
 
         .fakten-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 2rem;
-        max-width: 1000px;
-        margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
         .fakt {
-        background: #f9f9f9;
-        padding: 2rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        transition: transform 0.2s, box-shadow 0.2s;
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .fakt:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
         }
 
         .fakt .icon {
-        font-size: 2.2rem;
-        margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
         }
 
         .fakt h3 {
-        margin: 0;
-        font-size: 1.8rem;
-        font-weight: bold;
-        color: #111;
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #111;
         }
 
         .fakt p {
-        margin: 0;
-        font-size: 1rem;
-        color: #555;
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
         }
 
 
@@ -172,9 +174,9 @@
     <main>
         <div class="hero-verein-wrapper">
             <div class="hero-image img">
-                <img src="/Bilder/Anradeln-2024-Auftsellung.webp" srcset="/Bilder/Anradeln-2024-Auftsellung-small.webp 480w,
-                            /Bilder/Anradeln-2024-Auftsellung-medium.webp 900w,
-                            /Bilder/Anradeln-2024-Auftsellung.webp 1600w" sizes="(max-width: 600px) 100vw, 
+                <img src="/assets/img/hero/Anradeln-2024-Auftsellung.webp" srcset="/assets/img/hero/Anradeln-2024-Auftsellung-small.webp 480w,
+                            /assets/img/hero/Anradeln-2024-Auftsellung-medium.webp 900w,
+                            /assets/img/hero/Anradeln-2024-Auftsellung.webp 1600w" sizes="(max-width: 600px) 100vw, 
                             (max-width: 1200px) 80vw, 
                             1600px" alt="Aufstellung Anradeln 2024" width="900" height="675">
             </div>
@@ -190,6 +192,29 @@
         </div>
         <section class="container">
             <div class="top-events-container">
+
+                <!-- Summer Bike Series wie gehabt -->
+                <div class="event-card summer-series">
+                    <h3>Summer Bike Series</h3>
+
+                    <div class="single-event">
+                        <p class="event-date"><i class="fa-regular fa-calendar-days"></i>05.07.2025 – 15:00 Uhr</p>
+                        <p class="event-name">Kammgarn Kriterium Hard</p>
+                    </div>
+
+                    <div class="single-event">
+                        <p class="event-date"><i class="fa-regular fa-calendar-days"></i>05.07.2025 – 18:00 Uhr</p>
+                        <p class="event-name">Einzelzeitfahren Rohrspitz – Fußach</p>
+                    </div>
+
+                    <div class="single-event">
+                        <p class="event-date"><i class="fa-regular fa-calendar-days"></i>06.07.2025 – 10:00 Uhr</p>
+                        <p class="event-name">Bergrennen Wolfurt–Buch</p>
+                    </div>
+
+                    <a href="/Events/sbs/summer-bike-series-2025.html" class="event-button weiterlesen-button">Mehr
+                        Infos und Anmeldung</a>
+                </div>
 
                 <!-- Nightrace mit mehreren Unterkategorien -->
                 <div class="event-card nightrace">
@@ -214,28 +239,7 @@
                         class="event-button gelber-button">Zu den Ergebnissen</a>
                 </div>
 
-                <!-- Summer Bike Series wie gehabt -->
-                <div class="event-card summer-series">
-                    <h3>Summer Bike Series</h3>
-
-                    <div class="single-event">
-                        <p class="event-date"><i class="fa-regular fa-calendar-days"></i>05.07.2025 – 15:00 Uhr</p>
-                        <p class="event-name">Kammgarn Kriterium Hard</p>
-                    </div>
-
-                    <div class="single-event">
-                        <p class="event-date"><i class="fa-regular fa-calendar-days"></i>05.07.2025 – 18:00 Uhr</p>
-                        <p class="event-name">Einzelzeitfahren Rohrspitz – Fußach</p>
-                    </div>
-
-                    <div class="single-event">
-                        <p class="event-date"><i class="fa-regular fa-calendar-days"></i>06.07.2025 – 10:00 Uhr</p>
-                        <p class="event-name">Bergrennen Wolfurt–Buch</p>
-                    </div>
-
-                    <a href="/Events/sbs/summer-bike-series-2025.html" class="event-button weiterlesen-button">Mehr
-                        Infos und Anmeldung</a>
-                </div>
+                
 
             </div>
         </section>
@@ -328,116 +332,133 @@
             })();
         </script>
 
-        <!-- EVENTS / TEASER -->
+        <section class="instagram-feed">
+            <h2>Instagram Feed</h2>
+            <div class="embedsocial-hashtag" data-ref="84faf809d9dd90588189de7c6e46ff43c4ccf5de"> <a
+                    class="feed-powered-by-es feed-powered-by-es-slider-img es-widget-branding"
+                    href="https://embedsocial.com/social-media-aggregator/" target="_blank" title="Instagram widget">
+                    <img src="https://embedsocial.com/cdn/icon/embedsocial-logo.webp" alt="EmbedSocial">
+                    <div class="es-widget-branding-text">Instagram widget</div>
+                </a> </div>
+            <script> (function (d, s, id) { var js; if (d.getElementById(id)) { return; } js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js); }(document, "script", "EmbedSocialHashtagScript")); </script>
+        </section>
+
+            <!-- EVENTS / TEASER -->
             <section class="events">
-            <h2>Nächste Events</h2>
-            <p class="event-teaser">
-                Du möchtest beim nächsten Event dabei sein?<br>
-                Folge uns auf <a href="https://www.instagram.com/rv_hard/" target="_blank">Instagram</a> oder schau regelmäßig hier vorbei!
-            </p>
+                <h2>Nächste Events</h2>
+                <p class="event-teaser">
+                    Du möchtest beim nächsten Event dabei sein?<br>
+                    Folge uns auf <a href="https://www.instagram.com/rv_hard/" target="_blank">Instagram</a> oder schau
+                    regelmäßig hier vorbei!
+                </p>
             </section>
 
 
             <!-- FAKTEN -->
             <section class="fakten">
-            <h2>Unsere Fakten</h2>
-            <div class="fakten-grid">
-                <div class="fakt">
-                <div class="icon">👥</div>
-                <h3>250+</h3>
-                <p>Mitglieder</p>
+                <h2>Unsere Fakten</h2>
+                <div class="fakten-grid">
+                    <div class="fakt">
+                        <div class="icon">👥</div>
+                        <h3>250+</h3>
+                        <p>Mitglieder</p>
+                    </div>
+                    <div class="fakt">
+                        <div class="icon">🏅</div>
+                        <h3>100+</h3>
+                        <p>Jahre Tradition</p>
+                    </div>
+                    <div class="fakt">
+                        <div class="icon">👶</div>
+                        <h3>50+</h3>
+                        <p>Kinder & Jugendliche</p>
+                    </div>
+                    <div class="fakt">
+                        <div class="icon">🚴</div>
+                        <h3>3</h3>
+                        <p>Sparten:
+                            <br>
+                            Rennrad, MTB, Triathlon
+                        </p>
+                    </div>
                 </div>
-                <div class="fakt">
-                <div class="icon">🏅</div>
-                <h3>100+</h3>
-                <p>Jahre Tradition</p>
-                </div>
-                <div class="fakt">
-                <div class="icon">👶</div>
-                <h3>50+</h3>
-                <p>Kinder & Jugendliche</p>
-                </div>
-                <div class="fakt">
-                <div class="icon">🚴</div>
-                <h3>3</h3>
-                <p>Sparten: Rennrad, MTB, Triathlon</p>
-                </div>
-            </div>
             </section>
 
 
 
 
-        <!-- Call to Action -->
-        <section class="cta-mitglied">
-            <h2>Werde Teil unserer Radsport-Familie</h2>
-            <p>Ob Rennrad, MTB oder Triathlon – wir freuen uns auf dich!</p>
-            <a href="/Verein/mitglied-werden.html" class="gelber-button">Jetzt Mitglied werden</a>
-        </section>
+            <!-- Call to Action -->
+            <section class="cta-mitglied">
+                <h2>Werde Teil unserer Radsport-Familie</h2>
+                <p>Ob Rennrad, MTB oder Triathlon – wir freuen uns auf dich!</p>
+                <a href="/Verein/mitglied-werden.html" class="gelber-button">Jetzt Mitglied werden</a>
+            </section>
 
 
-        <section class="sponsoren-dank">
-            <h2>Ein herzliches Dankeschön an unsere Sponsoren</h2>
-            <div class="logos">
-                <div class="logos-slide">
-                    <a href="https://www.alpla.com/de" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/alpla.webp" alt="Alpla Logo" width="340" height="50" />
-                    </a>
-                    <a href="https://www.becker-installationen.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/becker.webp" alt="Becker Installationen Logo" width="340"
-                            height="50" />
-                    </a>
-                    <a href="https://www.djs.bike" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/dj.webp" alt="DJ's Bikeshop Logo" width="340" height="50" />
-                    </a>
-                    <a href="https://www.faigle.com/de" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/faigle.webp" alt="Faigle Logo" width="340" height="50" />
-                    </a>
-                    <a href="https://www.tierklinik-fuerst.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/fürst.webp" alt="Tierklinik Fürst Logo" width="340"
-                            height="50" />
-                    </a>
-                    <a href="https://www.generali.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/generali-medium.webp" alt="Generali Logo" width="907"
-                            height="50" />
-                    </a>
-                    <a href="https://lang-schiller.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/lang und schiller.webp" alt="Lang & Schiller Logo" width="340"
-                            height="50" />
-                    </a>
-                    <a href="https://oeamtc.at" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/Öamtc.webp" alt="ÖAMTC Logo" width="340" height="50" />
-                    </a>
-                    <a href="https://www.profimed.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/profimed.webp" alt="Profimed Logo" width="340" height="50" />
-                    </a>
-                    <a href="index.html">
-                        <img src="/assets/sponsoren/img/Ronchese.webp" alt="Fußpflege Ronchese Logo" width="454"
-                            height="50" />
-                    </a>
-                    <a href="https://www.raiffeisen.at/de/privatkunden.html" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/raiffeisen.webp" alt="Raiffeisen Logo" width="340"
-                            height="50" />
-                    </a>
-                    <a href="https://schaffer-dachbau.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/schffer.webp" alt="Dachbau Schaffer Logo" width="340"
-                            height="50" />
-                    </a>
-                    <a href="https://simplon.com/de" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/simplon-svg-.webp" alt="Simplon Logo" width="1417"
-                            height="50" />
-                    </a>
-                    <a href="https://www.vn.at/" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/vn.webp" alt="Vorarlberger Nachrichten Logo" width="340"
-                            height="50" />
-                    </a>
-                    <a href="https://vkw.at" target="_blank" rel="noopener noreferrer">
-                        <img src="/assets/sponsoren/img/vkw.webp" alt="VKW Logo" width="340" height="50" />
-                    </a>
+            <section class="sponsoren-dank">
+                <h2>Ein herzliches Dankeschön an unsere Sponsoren</h2>
+                <div class="logos">
+                    <div class="logos-slide">
+                        <a href="https://www.alpla.com/de" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/alpla.webp" alt="Alpla Logo" width="340" height="50" />
+                        </a>
+                        <a href="https://www.becker-installationen.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/becker.webp" alt="Becker Installationen Logo" width="340"
+                                height="50" />
+                        </a>
+                        <a href="https://www.djs.bike" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/dj.webp" alt="DJ's Bikeshop Logo" width="340" height="50" />
+                        </a>
+                        <a href="https://www.faigle.com/de" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/faigle.webp" alt="Faigle Logo" width="340" height="50" />
+                        </a>
+                        <a href="https://www.tierklinik-fuerst.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/fürst.webp" alt="Tierklinik Fürst Logo" width="340"
+                                height="50" />
+                        </a>
+                        <a href="https://www.generali.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/generali-medium.webp" alt="Generali Logo" width="907"
+                                height="50" />
+                        </a>
+                        <a href="https://lang-schiller.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/lang und schiller.webp" alt="Lang & Schiller Logo"
+                                width="340" height="50" />
+                        </a>
+                        <a href="https://oeamtc.at" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/Öamtc.webp" alt="ÖAMTC Logo" width="340" height="50" />
+                        </a>
+                        <a href="https://www.profimed.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/profimed.webp" alt="Profimed Logo" width="340"
+                                height="50" />
+                        </a>
+                        <a href="index.html">
+                            <img src="/assets/sponsoren/img/Ronchese.webp" alt="Fußpflege Ronchese Logo" width="454"
+                                height="50" />
+                        </a>
+                        <a href="https://www.raiffeisen.at/de/privatkunden.html" target="_blank"
+                            rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/raiffeisen.webp" alt="Raiffeisen Logo" width="340"
+                                height="50" />
+                        </a>
+                        <a href="https://schaffer-dachbau.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/schffer.webp" alt="Dachbau Schaffer Logo" width="340"
+                                height="50" />
+                        </a>
+                        <a href="https://simplon.com/de" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/simplon-svg-.webp" alt="Simplon Logo" width="1417"
+                                height="50" />
+                        </a>
+                        <a href="https://www.vn.at/" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/vn.webp" alt="Vorarlberger Nachrichten Logo" width="340"
+                                height="50" />
+                        </a>
+                        <a href="https://vkw.at" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/sponsoren/img/vkw.webp" alt="VKW Logo" width="340" height="50" />
+                        </a>
+                    </div>
                 </div>
-            </div>
 
-        </section>
+            </section>
 
 
 
