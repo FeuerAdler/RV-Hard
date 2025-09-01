@@ -22,16 +22,53 @@
         <h1>2. Jolsport Triathlon Fußach 2023 - RV Hard</h1>
         <section class="danke-section">
             <h1>ABGESAGT</h1>
-            <p>Der 3. JolSport Triathlon Fußach wurde wegen Änderungen der behördlichen Rahmenbedingungen abgesagt. Wir entschuldigen uns für entstandenen Unannehmlichkeiten
-</p>
+            <p>Der 3. JolSport Triathlon Fußach wurde wegen Änderungen der behördlichen Rahmenbedingungen abgesagt. Wir
+                entschuldigen uns für entstandenen Unannehmlichkeiten
+            </p>
         </section>
 
         <section class="anmeldung-section">
             <h2>Anmeldung</h2>
             <p>Die Anmeldung erfolgt über RaceResult:</p>
-            <div class="raceresult-embed-container">
-                <iframe src="https://my.raceresult.com/284688/" width="100%" height="700px" frameborder="0"></iframe>
+            <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284688/">
+                <div class="raceresult-placeholder"
+                    style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+                    Bitte akzeptiere die Cookies, um die Live-Ergebnisse zu sehen.
+                </div>
             </div>
+
+            <script>
+                function loadRaceresultIframes() {
+                    document.querySelectorAll('.raceresult-embed-container').forEach(container => {
+                        const src = container.getAttribute('data-src');
+                        if (!src) return;
+                        const placeholder = container.querySelector('.raceresult-placeholder');
+                        if (placeholder) placeholder.remove();
+                        const iframe = document.createElement('iframe');
+                        iframe.src = src;
+                        iframe.width = "100%";
+                        iframe.height = "700px";
+                        iframe.frameBorder = "0";
+                        container.appendChild(iframe);
+                    });
+                }
+
+                // Lädt die iFrames, falls Cookies bereits akzeptiert wurden
+                document.addEventListener("DOMContentLoaded", () => {
+                    if (localStorage.getItem("cookieAccepted") === "true") {
+                        loadRaceresultIframes();
+                    }
+                });
+
+                // Eventlistener für Cookie-Zustimmung
+                const cookieBtn = document.getElementById("cookie-ok-btn");
+                if (cookieBtn) {
+                    cookieBtn.addEventListener("click", () => {
+                        loadRaceresultIframes();
+                    });
+                }
+            </script>
+
         </section>
         <section class="info-section">
             <h2>Allgemeine Informationen</h2>
@@ -59,88 +96,88 @@
             </ul>
         </section>
 
-<section class="zeitplan-section">
-    <h2>Ablauf (Zusammenfassung)</h2>
-    <table class="zeitplan-tabelle">
-        <thead>
-            <tr>
-                <th>Uhrzeit</th>
-                <th>Programmpunkt</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-label="Uhrzeit">Ab 07:00</td>
-                <td data-label="Programmpunkt">Startnummernausgabe</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">07:00 - 08:00</td>
-                <td data-label="Programmpunkt">Check-In Schüler (alle Kategorien)</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">08:15 - 10:15</td>
-                <td data-label="Programmpunkt">Wettkampfbesprechungen Schüler** (E, D, C, B - sukzessive)</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">08:30 - 10:32</td>
-                <td data-label="Programmpunkt">Starts Schüler** (E, D, C, B m/w - sukzessive)</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">11:00 - 11:30</td>
-                <td data-label="Programmpunkt">Check-In Schüler A / Jugend / Tri Women/Men</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">11:30</td>
-                <td data-label="Programmpunkt">Wettkampfbesprechung Tri Women/Men</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">11:45 / 11:47</td>
-                <td data-label="Programmpunkt">Starts Tri Men / Tri Women</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">12:30</td>
-                <td data-label="Programmpunkt">Wettkampfbesprechung Schüler A / Jugend</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">12:45 / 12:48</td>
-                <td data-label="Programmpunkt">Starts Schüler A m/w + Jugend m/w</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">13:05</td>
-                <td data-label="Programmpunkt">Check-Out alle Klassen (vormittags)</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">14:00</td>
-                <td data-label="Programmpunkt">Start Sprint Herren</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">14:30 - 15:00</td>
-                <td data-label="Programmpunkt">Check-In alle Klassen (Nachmittagsprogramm)</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">15:00</td>
-                <td data-label="Programmpunkt">Siegerehrungen Schüler, Jugend, Tri Women/Men</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">15:15</td>
-                <td data-label="Programmpunkt">Wettkampfbesprechung Junioren/U23/Elite/Masters/Staffel</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">15:30 / 15:35</td>
-                <td data-label="Programmpunkt">Starts Junioren/U23/Elite/Masters (Herren/Damen) & Staffeln</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">17:45 - 18:30</td>
-                <td data-label="Programmpunkt">Check-Out alle Klassen (Nachmittagsprogramm)</td>
-            </tr>
-            <tr>
-                <td data-label="Uhrzeit">17:45</td>
-                <td data-label="Programmpunkt">Siegerehrungen & After Race Party</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-        
+        <section class="zeitplan-section">
+            <h2>Ablauf (Zusammenfassung)</h2>
+            <table class="zeitplan-tabelle">
+                <thead>
+                    <tr>
+                        <th>Uhrzeit</th>
+                        <th>Programmpunkt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Uhrzeit">Ab 07:00</td>
+                        <td data-label="Programmpunkt">Startnummernausgabe</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">07:00 - 08:00</td>
+                        <td data-label="Programmpunkt">Check-In Schüler (alle Kategorien)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">08:15 - 10:15</td>
+                        <td data-label="Programmpunkt">Wettkampfbesprechungen Schüler** (E, D, C, B - sukzessive)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">08:30 - 10:32</td>
+                        <td data-label="Programmpunkt">Starts Schüler** (E, D, C, B m/w - sukzessive)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">11:00 - 11:30</td>
+                        <td data-label="Programmpunkt">Check-In Schüler A / Jugend / Tri Women/Men</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">11:30</td>
+                        <td data-label="Programmpunkt">Wettkampfbesprechung Tri Women/Men</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">11:45 / 11:47</td>
+                        <td data-label="Programmpunkt">Starts Tri Men / Tri Women</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">12:30</td>
+                        <td data-label="Programmpunkt">Wettkampfbesprechung Schüler A / Jugend</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">12:45 / 12:48</td>
+                        <td data-label="Programmpunkt">Starts Schüler A m/w + Jugend m/w</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">13:05</td>
+                        <td data-label="Programmpunkt">Check-Out alle Klassen (vormittags)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">14:00</td>
+                        <td data-label="Programmpunkt">Start Sprint Herren</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">14:30 - 15:00</td>
+                        <td data-label="Programmpunkt">Check-In alle Klassen (Nachmittagsprogramm)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">15:00</td>
+                        <td data-label="Programmpunkt">Siegerehrungen Schüler, Jugend, Tri Women/Men</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">15:15</td>
+                        <td data-label="Programmpunkt">Wettkampfbesprechung Junioren/U23/Elite/Masters/Staffel</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">15:30 / 15:35</td>
+                        <td data-label="Programmpunkt">Starts Junioren/U23/Elite/Masters (Herren/Damen) & Staffeln</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">17:45 - 18:30</td>
+                        <td data-label="Programmpunkt">Check-Out alle Klassen (Nachmittagsprogramm)</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">17:45</td>
+                        <td data-label="Programmpunkt">Siegerehrungen & After Race Party</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
         <section class="pdf-section">
             <h2>Ausschreibung & Streckenpläne</h2>
             <p><a class="registration-button"
@@ -166,6 +203,8 @@
 
     <script src="/assets/navigation-loader.js"></script>
     <script src="/assets/nav.js"></script>
+    <script src="/assets/cookie-banner.js" defer></script>
+
 </body>
 
 </html>

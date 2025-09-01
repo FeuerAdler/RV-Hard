@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="/assets/events/nightrace.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Synthese:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Synthese:wght@400;700&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -18,37 +19,79 @@
     <div id="navigation-container"></div>
   </header>
 
-   <main class="nightrace-container">
-        <h1>Summer Bike Series 2024</h1>
-        <section class="danke-section">
-            <h1>Danke für eure Teilnahme!</h1>
-            <p>Die Summer Bike Series 2024 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen.</p>
-        </section>
+  <main class="nightrace-container">
+    <h1>Summer Bike Series 2024</h1>
+    <section class="danke-section">
+      <h1>Danke für eure Teilnahme!</h1>
+      <p>Die Summer Bike Series 2024 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen,
+        Helfer:innen, Sponsor:innen und Zuschauer:innen.</p>
+    </section>
 
-        
+
     <section class="anmeldung-section">
       <h2>Ergebnisse</h2>
       <p>Hier findest du alle Resultate der einzelnen Bewerbe:</p>
 
-      <div class="raceresult-embed-container">
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284409/results">
         <h2>Kriterium</h2>
-        <iframe src="https://my.raceresult.com/284409/results" width="100%" height="700px" frameborder="0"></iframe>
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
       </div>
 
-      <div class="raceresult-embed-container">
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284412/results">
         <h2>Einzelzeitfahren</h2>
-        <iframe src="https://my.raceresult.com/284412/results" width="100%" height="700px" frameborder="0"></iframe>
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
       </div>
 
-      <div class="raceresult-embed-container">
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284413/results">
         <h2>Bergrennen</h2>
-        <iframe src="https://my.raceresult.com/284413/results" width="100%" height="700px" frameborder="0"></iframe>
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
       </div>
+
+      <script>
+        function loadAllRaceresultIframes() {
+          document.querySelectorAll('.raceresult-embed-container').forEach(container => {
+            const src = container.getAttribute('data-src');
+            const placeholder = container.querySelector('.raceresult-placeholder');
+            if (placeholder) placeholder.remove(); // Platzhalter entfernen
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.width = "100%";
+            iframe.height = "700px";
+            iframe.frameBorder = "0";
+            container.appendChild(iframe);
+          });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+          if (localStorage.getItem("cookieAccepted") === "true") {
+            loadAllRaceresultIframes();
+          }
+        });
+
+        const cookieBtn = document.getElementById("cookie-ok-btn");
+        if (cookieBtn) {
+          cookieBtn.addEventListener("click", () => {
+            loadAllRaceresultIframes();
+          });
+        }
+      </script>
+
     </section>
     <section class="info-section">
       <h2>Allgemeine Informationen</h2>
       <p>
-        Die <strong>Summer Bike Series</strong> 2024 fand am <strong>4. und 5. Mai 2024</strong> statt. Wir bedanken uns herzlich bei allen Teilnehmer:innen, Helfer:innen, Sponsoren und Unterstützer:innen, die dieses Rennwochenende zu einem großartigen Event gemacht haben!
+        Die <strong>Summer Bike Series</strong> 2024 fand am <strong>4. und 5. Mai 2024</strong> statt. Wir bedanken uns
+        herzlich bei allen Teilnehmer:innen, Helfer:innen, Sponsoren und Unterstützer:innen, die dieses Rennwochenende
+        zu einem großartigen Event gemacht haben!
       </p>
       <ul>
         <li><strong>Datum:</strong> 04.–05. Mai 2024</li>
@@ -69,13 +112,15 @@
       <div class="event-block">
         <h3>Einzelzeitfahren Rohrspitz – Fußach</h3>
         <p><strong>📅 Samstag, 04.05.2024 · Start ab 17:00 Uhr</strong></p>
-        <p>2,86 km flacher, schneller Kurs entlang des Bodenseeradwegs. <br> Windschattenverbot! Inkl. Landesmeisterschaft.</p>
+        <p>2,86 km flacher, schneller Kurs entlang des Bodenseeradwegs. <br> Windschattenverbot! Inkl.
+          Landesmeisterschaft.</p>
       </div>
 
       <div class="event-block">
         <h3>Kammgarn Kriterium Hard</h3>
         <p><strong>📅 Sonntag, 05.05.2024 · Start ab 10:00 Uhr</strong></p>
-        <p>Technisch anspruchsvoller Rundkurs mit bis zu 40 Runden à 650 m je nach Altersklasse. Inkl. Landesmeisterschaft.</p>
+        <p>Technisch anspruchsvoller Rundkurs mit bis zu 40 Runden à 650 m je nach Altersklasse. Inkl.
+          Landesmeisterschaft.</p>
       </div>
     </section>
 
@@ -112,6 +157,8 @@
 
   <script src="/assets/navigation-loader.js"></script>
   <script src="/assets/nav.js"></script>
+  <script src="/assets/cookie-banner.js" defer></script>
+
 </body>
 
 </html>

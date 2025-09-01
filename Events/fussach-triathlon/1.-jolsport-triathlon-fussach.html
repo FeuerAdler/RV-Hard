@@ -22,22 +22,64 @@
         <h1>1. Jolsport Triathlon Fußach 2022 - RV Hard</h1>
         <section class="danke-section">
             <h1>Danke für eure Teilnahme!</h1>
-            <p>Der 1. JolSport Triahlon Fußach war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen für diesen unvergesslichen Tag im Stedepark.</p>
+            <p>Der 1. JolSport Triahlon Fußach war ein voller Erfolg – dank euch! Wir bedanken uns bei allen
+                Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen für diesen unvergesslichen Tag im
+                Stedepark.</p>
         </section>
-        
+
         <section class="anmeldung-section">
             <h2>Anmeldung</h2>
             <p>Die Anmeldung erfolgt über RaceResult:</p>
-            <div class="raceresult-embed-container">
-                <iframe src="https://my.raceresult.com/194358/" width="100%" height="700px" frameborder="0"></iframe>
+            <div class="raceresult-embed-container" data-src="https://my.raceresult.com/194358/">
+                <div class="raceresult-placeholder"
+                    style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+                    Bitte akzeptiere die Cookies, um die Live-Ergebnisse zu sehen.
+                </div>
             </div>
+
+            <script>
+                function loadRaceresultIframes() {
+                    document.querySelectorAll('.raceresult-embed-container').forEach(container => {
+                        const src = container.getAttribute('data-src');
+                        if (!src) return;
+                        const placeholder = container.querySelector('.raceresult-placeholder');
+                        if (placeholder) placeholder.remove();
+                        const iframe = document.createElement('iframe');
+                        iframe.src = src;
+                        iframe.width = "100%";
+                        iframe.height = "700px";
+                        iframe.frameBorder = "0";
+                        container.appendChild(iframe);
+                    });
+                }
+
+                // Lädt die iFrames, falls Cookies bereits akzeptiert wurden
+                document.addEventListener("DOMContentLoaded", () => {
+                    if (localStorage.getItem("cookieAccepted") === "true") {
+                        loadRaceresultIframes();
+                    }
+                });
+
+                // Eventlistener für Cookie-Zustimmung
+                const cookieBtn = document.getElementById("cookie-ok-btn");
+                if (cookieBtn) {
+                    cookieBtn.addEventListener("click", () => {
+                        loadRaceresultIframes();
+                    });
+                }
+            </script>
+
         </section>
         <section class="info-section">
             <h2>Allgemeine Informationen</h2>
-            <p>Der Jolsport Triathlon in Fußach ist ein Sprint- und Supersprintbewerb für Hobby-, Team- und Leistungssportler*innen. Die Strecke verläuft in einzigartiger Naturkulisse mit Schwimmen im Hafen, Radfahren durch das Rheindelta und Laufen entlang des Uferwegs. Aufgrund der gesperrten Strecke ist Windschattenfahren erlaubt.</p>
+            <p>Der Jolsport Triathlon in Fußach ist ein Sprint- und Supersprintbewerb für Hobby-, Team- und
+                Leistungssportler*innen. Die Strecke verläuft in einzigartiger Naturkulisse mit Schwimmen im Hafen,
+                Radfahren durch das Rheindelta und Laufen entlang des Uferwegs. Aufgrund der gesperrten Strecke ist
+                Windschattenfahren erlaubt.</p>
             <ul>
                 <li><strong>Datum:</strong> 3. September 2022</li>
-                <li><strong>Ort:</strong> <a href="https://www.google.com/maps?q=Fußach,+Österreich" target="_blank" rel="noopener">Fußach, Österreich</a></li>
+                <li><strong>Ort:</strong> <a href="https://www.google.com/maps?q=Fußach,+Österreich" target="_blank"
+                        rel="noopener">Fußach, Österreich</a></li>
                 <li><strong>Veranstalter:</strong> RV Hard</li>
             </ul>
         </section>
@@ -45,10 +87,14 @@
         <section class="strecken-section">
             <h2>Streckenpläne</h2>
             <ul class="dokumente-liste">
-                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-Sprint-2022.pdf" download>Sprintdistanz (PDF)</a></li>
-                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-A-B-C-Women-2022.pdf" download>Kategorien A–C & TriWomen/Men (PDF)</a></li>
-                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-2022-D.pdf" download>Kategorie D (PDF)</a></li>
-                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-2022-E.pdf" download>Kategorie E (PDF)</a></li>
+                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-Sprint-2022.pdf"
+                        download>Sprintdistanz (PDF)</a></li>
+                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-A-B-C-Women-2022.pdf"
+                        download>Kategorien A–C & TriWomen/Men (PDF)</a></li>
+                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-2022-D.pdf"
+                        download>Kategorie D (PDF)</a></li>
+                <li><a class="dokument-link" href="/downloads/Ausschreibung-Fussachtriathlon-2022-E.pdf"
+                        download>Kategorie E (PDF)</a></li>
             </ul>
         </section>
 
@@ -68,30 +114,76 @@
             <h2>Ablauf</h2>
             <table class="zeitplan-tabelle">
                 <thead>
-                    <tr><th>Uhrzeit</th><th>Programmpunkt</th></tr>
+                    <tr>
+                        <th>Uhrzeit</th>
+                        <th>Programmpunkt</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td data-label="Uhrzeit">07:00</td><td data-label="Programmpunkt">Startnummernausgabe</td></tr>
-                    <tr><td data-label="Uhrzeit">08:00</td><td data-label="Programmpunkt">Check-In Schüler & Tri Women/Men</td></tr>
-                    <tr><td data-label="Uhrzeit">09:45</td><td data-label="Programmpunkt">Wettkampfbesprechung</td></tr>
-                    <tr><td data-label="Uhrzeit">10:00</td><td data-label="Programmpunkt">Start Schüler E</td></tr>
-                    <tr><td data-label="Uhrzeit">10:15</td><td data-label="Programmpunkt">Start Schüler D</td></tr>
-                    <tr><td data-label="Uhrzeit">10:30</td><td data-label="Programmpunkt">Start Schüler C/B/A</td></tr>
-                    <tr><td data-label="Uhrzeit">11:15</td><td data-label="Programmpunkt">Start Tri Men</td></tr>
-                    <tr><td data-label="Uhrzeit">11:20</td><td data-label="Programmpunkt">Start Tri Women</td></tr>
-                    <tr><td data-label="Uhrzeit">12:30</td><td data-label="Programmpunkt">Siegerehrung Nachwuchs & Tri Women/Men</td></tr>
-                    <tr><td data-label="Uhrzeit">12:15</td><td data-label="Programmpunkt">Check-In Sprint & Staffel</td></tr>
-                    <tr><td data-label="Uhrzeit">12:45</td><td data-label="Programmpunkt">Wettkampfbesprechung</td></tr>
-                    <tr><td data-label="Uhrzeit">13:00</td><td data-label="Programmpunkt">Start Sprint Herren</td></tr>
-                    <tr><td data-label="Uhrzeit">13:05</td><td data-label="Programmpunkt">Start Sprint Damen & Staffel</td></tr>
-                    <tr><td data-label="Uhrzeit">15:30</td><td data-label="Programmpunkt">Siegerehrung & After-Race-Party</td></tr>
+                    <tr>
+                        <td data-label="Uhrzeit">07:00</td>
+                        <td data-label="Programmpunkt">Startnummernausgabe</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">08:00</td>
+                        <td data-label="Programmpunkt">Check-In Schüler & Tri Women/Men</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">09:45</td>
+                        <td data-label="Programmpunkt">Wettkampfbesprechung</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">10:00</td>
+                        <td data-label="Programmpunkt">Start Schüler E</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">10:15</td>
+                        <td data-label="Programmpunkt">Start Schüler D</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">10:30</td>
+                        <td data-label="Programmpunkt">Start Schüler C/B/A</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">11:15</td>
+                        <td data-label="Programmpunkt">Start Tri Men</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">11:20</td>
+                        <td data-label="Programmpunkt">Start Tri Women</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">12:30</td>
+                        <td data-label="Programmpunkt">Siegerehrung Nachwuchs & Tri Women/Men</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">12:15</td>
+                        <td data-label="Programmpunkt">Check-In Sprint & Staffel</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">12:45</td>
+                        <td data-label="Programmpunkt">Wettkampfbesprechung</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">13:00</td>
+                        <td data-label="Programmpunkt">Start Sprint Herren</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">13:05</td>
+                        <td data-label="Programmpunkt">Start Sprint Damen & Staffel</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Uhrzeit">15:30</td>
+                        <td data-label="Programmpunkt">Siegerehrung & After-Race-Party</td>
+                    </tr>
                 </tbody>
             </table>
         </section>
 
         <section class="pdf-section">
             <h2>Ausschreibung</h2>
-            <p><a class="registration-button" href="/downloads/Ausschreibung-Fussachtriathlon-2022.pdf" download>📄 Ausschreibung als PDF herunterladen</a></p>
+            <p><a class="registration-button" href="/downloads/Ausschreibung-Fussachtriathlon-2022.pdf" download>📄
+                    Ausschreibung als PDF herunterladen</a></p>
         </section>
 
 
@@ -112,6 +204,8 @@
 
     <script src="/assets/navigation-loader.js"></script>
     <script src="/assets/nav.js"></script>
+    <script src="/assets/cookie-banner.js" defer></script>
+
 </body>
 
 </html>

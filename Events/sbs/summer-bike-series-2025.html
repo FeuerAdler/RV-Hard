@@ -10,7 +10,8 @@
   <link rel="stylesheet" href="/assets/events/nightrace.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Synthese:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Synthese:wght@400;700&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
@@ -21,70 +22,76 @@
   <main class="nightrace-container">
     <h1>Summer Bike Series 2025</h1>
     <section class="danke-section">
-            <h1>Danke für eure Teilnahme!</h1>
-            <p>Die Summer Bike Series 2024 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen.</p>
-     </section>
+      <h1>Danke für eure Teilnahme!</h1>
+      <p>Die Summer Bike Series 2024 war ein voller Erfolg – dank euch! Wir bedanken uns bei allen Fahrer:innen,
+        Helfer:innen, Sponsor:innen und Zuschauer:innen.</p>
+    </section>
 
-        <section class="anmeldung-section">
-          <h2>Anmeldung & Ergebnisse</h2>
-          <p>Hier findest du Live-Ergebnisse und Teilnehmerlisten der einzelnen Bewerbe:</p>
+    <section class="anmeldung-section">
+      <h2>Anmeldung & Ergebnisse</h2>
+      <p>Hier findest du Live-Ergebnisse und Teilnehmerlisten der einzelnen Bewerbe:</p>
 
-          <div class="raceresult-embed-container" data-src="https://my.raceresult.com/338678/registration">
-            <h2>Kriterium</h2>
-            <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-                Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
-            </div>
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/338678/registration">
+        <h2>Kriterium</h2>
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
         </div>
+      </div>
 
-        <div class="raceresult-embed-container" data-src="https://my.raceresult.com/346302/registration">
-            <h2>Einzelzeitfahren</h2>
-            <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-                Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
-            </div>
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/346302/registration">
+        <h2>Einzelzeitfahren</h2>
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
         </div>
+      </div>
 
-        <div class="raceresult-embed-container" data-src="https://my.raceresult.com/346365/registration">
-            <h2>Bergrennen</h2>
-            <div class="raceresult-placeholder" style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-                Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
-            </div>
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/346365/registration">
+        <h2>Bergrennen</h2>
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Anmeldung zu sehen.
         </div>
+      </div>
 
-        <script>
-            function loadAllRaceresultIframes() {
-                document.querySelectorAll('.raceresult-embed-container').forEach(container => {
-                    const src = container.getAttribute('data-src');
-                    container.querySelector('.raceresult-placeholder').remove(); // Platzhalter entfernen
-                    const iframe = document.createElement('iframe');
-                    iframe.src = src;
-                    iframe.width = "100%";
-                    iframe.height = "700px";
-                    iframe.frameBorder = "0";
-                    container.appendChild(iframe);
-                });
-            }
+      <script>
+        function loadAllRaceresultIframes() {
+          document.querySelectorAll('.raceresult-embed-container').forEach(container => {
+            const src = container.getAttribute('data-src');
+            container.querySelector('.raceresult-placeholder').remove(); // Platzhalter entfernen
+            const iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.width = "100%";
+            iframe.height = "700px";
+            iframe.frameBorder = "0";
+            container.appendChild(iframe);
+          });
+        }
 
-            document.addEventListener("DOMContentLoaded", () => {
-                // Prüfen, ob Cookies schon akzeptiert wurden
-                if (localStorage.getItem("cookieAccepted") === "true") {
-                    loadAllRaceresultIframes();
-                }
-            });
+        document.addEventListener("DOMContentLoaded", () => {
+          // Prüfen, ob Cookies schon akzeptiert wurden
+          if (localStorage.getItem("cookieAccepted") === "true") {
+            loadAllRaceresultIframes();
+          }
+        });
 
-            // Wenn Nutzer Cookies gerade akzeptiert
-            const cookieBtn = document.getElementById("cookie-ok-btn");
-            if (cookieBtn) {
-                cookieBtn.addEventListener("click", () => {
-                    loadAllRaceresultIframes();
-                });
-            }
-        </script>
+        // Wenn Nutzer Cookies gerade akzeptiert
+        const cookieBtn = document.getElementById("cookie-ok-btn");
+        if (cookieBtn) {
+          cookieBtn.addEventListener("click", () => {
+            loadAllRaceresultIframes();
+          });
+        }
+      </script>
 
-        </section>
+    </section>
     <section class="info-section">
       <h2>Allgemeine Informationen</h2>
       <p>
-        Die <strong>Summer Bike Series</strong> findet am <strong>5. und 6. Juli 2025</strong> in Hard und Umgebung statt. Die dreiteilige Rennserie kombiniert Technik, Tempo und Ausdauer – ideal für Radsportbegeisterte aller Altersklassen.
+        Die <strong>Summer Bike Series</strong> findet am <strong>5. und 6. Juli 2025</strong> in Hard und Umgebung
+        statt. Die dreiteilige Rennserie kombiniert Technik, Tempo und Ausdauer – ideal für Radsportbegeisterte aller
+        Altersklassen.
       </p>
       <ul>
         <li><strong>Datum:</strong> 05.–06. Juli 2025</li>
@@ -94,33 +101,34 @@
     </section>
 
     <section class="strecken-section">
-  <h2>Rennübersicht</h2>
+      <h2>Rennübersicht</h2>
 
-  <div class="event-block">
-    <h3>Kammgarn Kriterium Hard</h3>
-    <p><strong>📅 Samstag, 05.07.2025 · Start ab 10:00 Uhr</strong></p>
-    <p>Technisch anspruchsvoller Rundkurs auf dem Kammgarn-Areal in Hard.<br>
-      Bis zu 30 Runden à 650 m je nach Altersklasse.</p>
-  </div>
+      <div class="event-block">
+        <h3>Kammgarn Kriterium Hard</h3>
+        <p><strong>📅 Samstag, 05.07.2025 · Start ab 10:00 Uhr</strong></p>
+        <p>Technisch anspruchsvoller Rundkurs auf dem Kammgarn-Areal in Hard.<br>
+          Bis zu 30 Runden à 650 m je nach Altersklasse.</p>
+      </div>
 
-  <div class="event-block">
-    <h3>Einzelzeitfahren Rohrspitz – Fußach</h3>
-    <p><strong>📅 Samstag, 05.07.2025 · Start ab 17:00 Uhr</strong></p>
-    <p>2,86 km flacher, schneller Kurs entlang des Bodenseeradwegs. <br> Windschattenverbot!</p>
-  </div>
+      <div class="event-block">
+        <h3>Einzelzeitfahren Rohrspitz – Fußach</h3>
+        <p><strong>📅 Samstag, 05.07.2025 · Start ab 17:00 Uhr</strong></p>
+        <p>2,86 km flacher, schneller Kurs entlang des Bodenseeradwegs. <br> Windschattenverbot!</p>
+      </div>
 
-  <div class="event-block">
-    <h3>Bergrennen Wolfurt – Buch</h3>
-    <p><strong>📅 Sonntag, 06.07.2025 · Start ab 10:00 Uhr</strong></p>
-    <p>Je nach Klasse 2 bis 6,6 km mit bis zu 308 Höhenmetern – das Highlight für Bergfahrer!</p>
-  </div>
-</section>
+      <div class="event-block">
+        <h3>Bergrennen Wolfurt – Buch</h3>
+        <p><strong>📅 Sonntag, 06.07.2025 · Start ab 10:00 Uhr</strong></p>
+        <p>Je nach Klasse 2 bis 6,6 km mit bis zu 308 Höhenmetern – das Highlight für Bergfahrer!</p>
+      </div>
+    </section>
 
 
     <section class="pdf-section">
       <h2>Offizielle Ausschreibung</h2>
       <p>Alle Details zu Klassen, Strecken und Zeitplan findest du hier:</p>
-      <a href="/downloads/ausschreibung-summer-bike-series-2025.pdf" target="_blank" class="event-button weiterlesen-button">
+      <a href="/downloads/ausschreibung-summer-bike-series-2025.pdf" target="_blank"
+        class="event-button weiterlesen-button">
         📄 Ausschreibung (PDF)
       </a>
     </section>
@@ -151,6 +159,8 @@
 
   <script src="/assets/navigation-loader.js"></script>
   <script src="/assets/nav.js"></script>
+  <script src="/assets/cookie-banner.js" defer></script>
+
 </body>
 
 </html>
