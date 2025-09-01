@@ -37,94 +37,141 @@
 
         // Event-Daten (könntest du aus einer JSON-Datei oder einem CMS laden)
         const events = [
-    {
-        id: 1,
-        datum: "2025-04-25", // ISO-Format
-        zeit: "19:00",
-        titel: "JHV Spannrahmen",
-        beschreibung: "Jahreshauptversammlung des RV Hard. Obmannteam wird gewählt. Vorstand wird entlastet. Alle Mitglieder sind herzlich eingeladen.",
-        link: null,
-        ort: "Spannrahmen, In der Wirke 2, Hard"
-    },
-    {
+  {
+    id: 1,
+    datum: "2025-04-25",
+    zeit: "19:00",
+    titel: "JHV Spannrahmen",
+    beschreibung: "Jahreshauptversammlung des RV Hard. Obmannteam wird gewählt. Vorstand wird entlastet. Alle Mitglieder sind herzlich eingeladen.",
+    link: null,
+    ort: "Spannrahmen, In der Wirke 2, Hard",
+    sparten: ["MTB", "Rennrad"], // Neue Eigenschaft
+    alter: null // optional, z. B. "U12, U14"
+  },
+  {
         id: 2,
         datum: "2025-03-12", // ISO-Format (Startdatum)
         zeit: "0:00-23:59",
         titel: "Vereinsradwoche Emilia Romagna",
         beschreibung: "Eine Woche Radfahren in der Emilia Romagna. Mit einem Hotel in Riccione direkt am Meer und täglichen Rennrad und MTB Touren.",
         link: null,
-        ort: "Hotel Poker, Riccione, Italien"
-        
+        ort: "Hotel Poker, Riccione, Italien",
+        sparten: ["MTB", "Rennrad", "Triathlon"]
     },
-    {
-        id: 3,
+  {
+    id: 3,
+    datum: "2025-03-30",
+    zeit: "10:00-16:00",
+    titel: "Anradeln 2025",
+    beschreibung: "Gemeinsames Saison-Eröffnungsradeln für alle Mitglieder.",
+    link: null,
+    ort: "Start: Rostlaube, Hard",
+    sparten: ["MTB", "Rennrad", ""],
+    alter: "Alle Altersklassen"
+  },
+  {
+        id: 4,
         datum: "2025-05-31", // ISO-Format
         zeit: "9:00-18:00",
         titel: "Nightrace 2025",
         beschreibung: "Viele spannenden Rennen von allen Alterkategorien mit dem Finale, dem traditionellen Harder MTB Nightrace.",
         link: "/Events/nightrace/dachbau-schaffer-nightrace-2025.html",
-        ort: "Stedepark, Hard"
+        ort: "Stedepark, Hard",
+        sparten: ["MTB"],
+        alter: "Alle Altersklassen"
     },
     {
-        id: 4,
+        id: 5,
         datum: "2025-07-05", // ISO-Format (Startdatum)
         zeit: "9:00-15:00",
         titel: "Summer Bike Series 2025",
         beschreibung: "Summer Bike Series 2025 mit Bergrennen in Buch, Kriterium am Kangarm Areal und Zeitfahren in Fussach.",
         link: "/Events/sbs/Summer-Bike-Series-2025.html",
-        ort: "Wolfurt-Buch(Bergrennen), Kangarm Areal, Hard(Kriterium), Camping Rohrspitz-Sportanlage Müss, Fußach(Zeitfahren)"
+        ort: "Wolfurt-Buch(Bergrennen), Kangarm Areal, Hard(Kriterium), Camping Rohrspitz-Sportanlage Müss, Fußach(Zeitfahren)",
+        sparten: ["Rennrad"],
+        alter: "Alle Alterklassen"
     },
+  {
+    id: 6,
+    datum: "2025-10-12",
+    zeit: "09:00-15:00",
+    titel: "Abradeln 2025",
+    beschreibung: "Saisonabschluss-Radeln mit gemütlichem Ausklang.",
+    link: null,
+    ort: "Start: Rostlaube, Hard",
+    sparten: ["MTB", "Rennrad", "Triathlon"],
+    alter: "Alle Altersklassen"
+  },
+  
+    
+    
+    
     // Füge hier weitere Events im ISO-Format hinzu
 ];
 
         const eventListeDiv = document.getElementById('event-liste');
 
         events.forEach(event => {
-    const eventCard = document.createElement('div');
-    eventCard.classList.add('modern-event-card');
+  const eventCard = document.createElement('div');
+  eventCard.classList.add('modern-event-card');
 
-    const titelElement = document.createElement('h3'); // Verwende <h3> für den Haupttitel
-    titelElement.textContent = event.titel;
+  const titelElement = document.createElement('h3');
+  titelElement.textContent = event.titel;
 
-    const datumElement = document.createElement('p'); // Verwende <p> für Datum und Zeit
-    const date = new Date(event.datum);
-    const day = date.getDate().toString().padStart(2, '0');
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const year = date.getFullYear();
-    datumElement.textContent = `${day}.${month}.${year} ${event.zeit || ''}`;
-    datumElement.classList.add('event-date-time'); // Füge eine Klasse für spezifisches Styling hinzu
+  const datumElement = document.createElement('p');
+  const date = new Date(event.datum);
+  const day = date.getDate().toString().padStart(2, '0');
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const year = date.getFullYear();
+  datumElement.textContent = `${day}.${month}.${year} ${event.zeit || ''}`;
+  datumElement.classList.add('event-date-time');
 
-    const beschreibungElement = document.createElement('p');
-    beschreibungElement.textContent = event.beschreibung;
+  const beschreibungElement = document.createElement('p');
+  beschreibungElement.textContent = event.beschreibung;
 
-    eventCard.appendChild(titelElement); // Titel zuerst
-    eventCard.appendChild(datumElement); // Datum und Zeit darunter
-    eventCard.appendChild(beschreibungElement);
+  eventCard.appendChild(titelElement);
+  eventCard.appendChild(datumElement);
+  eventCard.appendChild(beschreibungElement);
 
-    if (event.link) {
-        const linkButton = document.createElement('a');
-        linkButton.href = event.link;
-        linkButton.classList.add('event-button', 'weiterlesen-button');
-        linkButton.textContent = 'Mehr Infos';
-        eventCard.appendChild(linkButton);
-    }
-    if (event.ort) { // Überprüfe, ob ein Ort vorhanden ist
-        const ortElement = document.createElement('p');
-        ortElement.classList.add('event-location'); // Füge eine CSS-Klasse für Styling hinzu
-        ortElement.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${event.ort}`; // Optional mit Icon
-        eventCard.appendChild(ortElement);
-    }
+  if (event.sparten && event.sparten.length > 0) {
+    const spartenElement = document.createElement('p');
+    spartenElement.classList.add('event-sparten');
+    spartenElement.innerHTML = `<strong>Sparten:</strong> ${event.sparten.join(", ")}`;
+    eventCard.appendChild(spartenElement);
+  }
 
-    const kalenderButton = document.createElement('button');
-    kalenderButton.classList.add('event-button', 'kalender-button');
-    kalenderButton.innerHTML = '<i class="fa-regular fa-calendar-plus"></i> Zum Kalender hinzufügen';
-    kalenderButton.addEventListener('click', () => {
-        addToCalendar(event);
-    });
-    eventCard.appendChild(kalenderButton);
+  if (event.alter) {
+    const alterElement = document.createElement('p');
+    alterElement.classList.add('event-alter');
+    alterElement.innerHTML = `<strong>Altersklassen:</strong> ${event.alter}`;
+    eventCard.appendChild(alterElement);
+  }
 
-    eventListeDiv.appendChild(eventCard);
+  if (event.link) {
+    const linkButton = document.createElement('a');
+    linkButton.href = event.link;
+    linkButton.classList.add('event-button', 'weiterlesen-button');
+    linkButton.textContent = 'Mehr Infos';
+    eventCard.appendChild(linkButton);
+  }
+
+  if (event.ort) {
+    const ortElement = document.createElement('p');
+    ortElement.classList.add('event-location');
+    ortElement.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${event.ort}`;
+    eventCard.appendChild(ortElement);
+  }
+
+  // Kalender-Button bleibt unverändert
+  const kalenderButton = document.createElement('button');
+  kalenderButton.classList.add('event-button', 'kalender-button');
+  kalenderButton.innerHTML = '<i class="fa-regular fa-calendar-plus"></i> Zum Kalender hinzufügen';
+  kalenderButton.addEventListener('click', () => addToCalendar(event));
+  eventCard.appendChild(kalenderButton);
+
+  eventListeDiv.appendChild(eventCard);
 });
+
 
 function addToCalendar(event) {
     let timePart = '';
