@@ -30,64 +30,60 @@
       <h2>Ergebnisse</h2>
       <p>Hier findest du alle Resultate der einzelnen Bewerbe:</p>
 
-      <div class="raceresult-embed-container" data-src="https://www.raceresult.com/live/337333/?lang=de&race=kriterium">
-        <h2>Kriterium</h2>
+      <h3>Kriterium</h3>
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/208734/">
         <div class="raceresult-placeholder"
           style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-          Bitte akzeptiere die Cookies, um die Live-Ergebnisse zu sehen.
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
         </div>
       </div>
 
+      <h3>Kriterium II</h3>
+      <div class="raceresult-embed-container" data-src="https://my.raceresult.com/214247/">
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
+      </div>
+
+      <h3>Einzelzeitfahren</h3>
       <div class="raceresult-embed-container"
-        data-src="https://www.raceresult.com/live/337333/?lang=de&race=zeitfahren">
-        <h2>Einzelzeitfahren</h2>
+        data-src="https://my.raceresult.com/208979/">
         <div class="raceresult-placeholder"
           style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-          Bitte akzeptiere die Cookies, um die Live-Ergebnisse zu sehen.
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
         </div>
       </div>
 
+      <h3>Einzelzeitfahren II</h3>
       <div class="raceresult-embed-container"
-        data-src="https://www.raceresult.com/live/337333/?lang=de&race=bergrennen">
-        <h2>Bergrennen</h2>
+        data-src="https://my.raceresult.com/208982/">
         <div class="raceresult-placeholder"
           style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-          Bitte akzeptiere die Cookies, um die Live-Ergebnisse zu sehen.
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
         </div>
       </div>
 
-      <script>
-        function loadRaceresultIframes() {
-          document.querySelectorAll('.raceresult-embed-container').forEach(container => {
-            const src = container.getAttribute('data-src');
-            const placeholder = container.querySelector('.raceresult-placeholder');
-            if (placeholder) placeholder.remove();
-            const iframe = document.createElement('iframe');
-            iframe.src = src;
-            iframe.width = "100%";
-            iframe.height = "700px";
-            iframe.frameBorder = "0";
-            container.appendChild(iframe);
-          });
-        }
+      <h3>Bergrennen</h3>
+      <div class="raceresult-embed-container"
+        data-src="https://my.raceresult.com/208973/">
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
+      </div>
 
-        // Lädt die iFrames, falls Cookies bereits akzeptiert wurden
-        document.addEventListener("DOMContentLoaded", () => {
-          if (localStorage.getItem("cookieAccepted") === "true") {
-            loadRaceresultIframes();
-          }
-        });
-
-        // Eventlistener für Cookie-Button
-        const cookieBtn = document.getElementById("cookie-ok-btn");
-        if (cookieBtn) {
-          cookieBtn.addEventListener("click", () => {
-            loadRaceresultIframes();
-          });
-        }
-      </script>
-
+      <h3>Bergrennen II</h3>
+      <div class="raceresult-embed-container"
+        data-src="https://my.raceresult.com/208976/">
+        <div class="raceresult-placeholder"
+          style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
+          Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+        </div>
+      </div>
     </section>
+
+
     <section class="info-section">
       <h2>Allgemeine Informationen</h2>
       <p>
@@ -159,6 +155,8 @@
   <script src="/assets/navigation-loader.js"></script>
   <script src="/assets/nav.js"></script>
   <script src="/assets/cookie-banner.js" defer></script>
+  <script src="/assets/cookie-loader.js" defer></script>
+
 
 </body>
 

@@ -22,54 +22,22 @@
         <h1>1. Jolsport Triathlon Fußach 2022 - RV Hard</h1>
         <section class="danke-section">
             <h1>Danke für eure Teilnahme!</h1>
-            <p>Der 1. JolSport Triahlon Fußach war ein voller Erfolg – dank euch! Wir bedanken uns bei allen
-                Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen für diesen unvergesslichen Tag im
-                Stedepark.</p>
+            <p>Der 1. JolSport Triathlon Fußach war ein voller Erfolg – dank euch! Wir bedanken uns bei allen
+                Fahrer:innen, Helfer:innen, Sponsor:innen und Zuschauer:innen für diesen unvergesslichen Tag in
+                Fussach.</p>
         </section>
 
         <section class="anmeldung-section">
-            <h2>Anmeldung</h2>
-            <p>Die Anmeldung erfolgt über RaceResult:</p>
+            <h2>Ergebnisse</h2>
+            <p>Die Ergebnisse sind über RaceResult einsehbar:</p>
             <div class="raceresult-embed-container" data-src="https://my.raceresult.com/194358/">
                 <div class="raceresult-placeholder"
                     style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-                    Bitte akzeptiere die Cookies, um die Live-Ergebnisse zu sehen.
+                    Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
                 </div>
             </div>
-
-            <script>
-                function loadRaceresultIframes() {
-                    document.querySelectorAll('.raceresult-embed-container').forEach(container => {
-                        const src = container.getAttribute('data-src');
-                        if (!src) return;
-                        const placeholder = container.querySelector('.raceresult-placeholder');
-                        if (placeholder) placeholder.remove();
-                        const iframe = document.createElement('iframe');
-                        iframe.src = src;
-                        iframe.width = "100%";
-                        iframe.height = "700px";
-                        iframe.frameBorder = "0";
-                        container.appendChild(iframe);
-                    });
-                }
-
-                // Lädt die iFrames, falls Cookies bereits akzeptiert wurden
-                document.addEventListener("DOMContentLoaded", () => {
-                    if (localStorage.getItem("cookieAccepted") === "true") {
-                        loadRaceresultIframes();
-                    }
-                });
-
-                // Eventlistener für Cookie-Zustimmung
-                const cookieBtn = document.getElementById("cookie-ok-btn");
-                if (cookieBtn) {
-                    cookieBtn.addEventListener("click", () => {
-                        loadRaceresultIframes();
-                    });
-                }
-            </script>
-
         </section>
+        
         <section class="info-section">
             <h2>Allgemeine Informationen</h2>
             <p>Der Jolsport Triathlon in Fußach ist ein Sprint- und Supersprintbewerb für Hobby-, Team- und
@@ -205,6 +173,7 @@
     <script src="/assets/navigation-loader.js"></script>
     <script src="/assets/nav.js"></script>
     <script src="/assets/cookie-banner.js" defer></script>
+    <script src="/assets/cookie-loader.js" defer></script>
 
 </body>
 

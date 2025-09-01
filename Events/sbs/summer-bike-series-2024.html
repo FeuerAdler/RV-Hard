@@ -31,61 +31,35 @@
     <section class="anmeldung-section">
       <h2>Ergebnisse</h2>
       <p>Hier findest du alle Resultate der einzelnen Bewerbe:</p>
-
+      
+      <h3>Kriterium</h3>
       <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284409/results">
-        <h2>Kriterium</h2>
         <div class="raceresult-placeholder"
           style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
           Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
         </div>
       </div>
 
+      <h3>Einzelzeitfahren</h3>
       <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284412/results">
-        <h2>Einzelzeitfahren</h2>
         <div class="raceresult-placeholder"
           style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
           Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
         </div>
       </div>
 
+      <h3>Bergrennen</h3>
       <div class="raceresult-embed-container" data-src="https://my.raceresult.com/284413/results">
-        <h2>Bergrennen</h2>
         <div class="raceresult-placeholder"
           style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
           Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
         </div>
       </div>
-
-      <script>
-        function loadAllRaceresultIframes() {
-          document.querySelectorAll('.raceresult-embed-container').forEach(container => {
-            const src = container.getAttribute('data-src');
-            const placeholder = container.querySelector('.raceresult-placeholder');
-            if (placeholder) placeholder.remove(); // Platzhalter entfernen
-            const iframe = document.createElement('iframe');
-            iframe.src = src;
-            iframe.width = "100%";
-            iframe.height = "700px";
-            iframe.frameBorder = "0";
-            container.appendChild(iframe);
-          });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-          if (localStorage.getItem("cookieAccepted") === "true") {
-            loadAllRaceresultIframes();
-          }
-        });
-
-        const cookieBtn = document.getElementById("cookie-ok-btn");
-        if (cookieBtn) {
-          cookieBtn.addEventListener("click", () => {
-            loadAllRaceresultIframes();
-          });
-        }
-      </script>
-
     </section>
+
+
+
+
     <section class="info-section">
       <h2>Allgemeine Informationen</h2>
       <p>
@@ -158,6 +132,8 @@
   <script src="/assets/navigation-loader.js"></script>
   <script src="/assets/nav.js"></script>
   <script src="/assets/cookie-banner.js" defer></script>
+  <script src="/assets/cookie-loader.js" defer></script>
+
 
 </body>
 
