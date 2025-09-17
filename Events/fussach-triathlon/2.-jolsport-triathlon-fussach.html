@@ -30,14 +30,20 @@
         <section class="anmeldung-section">
             <h2>Ergebnisse</h2>
             <p>Die Ergebnisse sind über RaceResult einsehbar:</p>
+
             <div class="raceresult-embed-container" data-src="https://my.raceresult.com/231961/">
                 <div class="raceresult-placeholder"
                     style="padding: 2rem; text-align: center; background: #f9f9f9; border: 1px solid #ccc; border-radius: 8px;">
-                    Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.
+                    <p>Bitte akzeptiere die Cookies, um die Ergebnisse zu sehen.</p>
+                    <button class="accept-cookies-btn"
+                        style="margin-top:1rem; padding:0.5rem 1rem; background:#333; color:#fff; border:none; border-radius:5px; cursor:pointer;">
+                        Cookies akzeptieren
+                    </button>
                 </div>
             </div>
         </section>
-        
+
+
         <section class="info-section">
             <h2>Allgemeine Informationen</h2>
             <p>Der Jolsport Triathlon in Fußach ist ein Sprint- und Supersprintbewerb für Hobby-, Team- und
@@ -162,12 +168,21 @@
 
     <footer>
         <div class="social-icons">
-            <a href="https://www.instagram.com/rv_hard/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/radvereinhard/" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/rv_hard/" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.facebook.com/radvereinhard/" target="_blank" aria-label="Facebook">
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
         </div>
-        <p>&copy; 2025 RV Hard</p>
-        <p><a href="/impressum.html">Impressum</a> | <a href="/datenschutz.html">Datenschutz</a></p>
+        <p>&copy; 2024 RV Hard</p>
+        <p>
+            <a href="/impressum.html">Impressum</a> |
+            <a href="/datenschutz.html">Datenschutz</a> |
+            <a href="#" onclick="openCookieSettings()">Cookie-Einstellungen</a>
+        </p>
     </footer>
+
 
     <script src="/assets/navigation-loader.js"></script>
     <script src="/assets/nav.js"></script>
