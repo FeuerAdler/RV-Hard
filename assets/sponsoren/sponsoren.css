@@ -10,16 +10,31 @@
     color: #ffc107;
 }
 
+/* Standard (Desktop) */
 .sponsoren-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Erstellt 4 gleich breite Spalten */
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
     padding: 1.5rem;
     border-radius: 8px;
     position: relative;
-    /* Füge dies hinzu, um die automatische Zeilenhöhe zu definieren */
-    grid-auto-rows: auto; /* Oder eine feste Höhe, z.B. 150px */
+    grid-auto-rows: auto;
 }
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .sponsoren-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 Spalten */
+    }
+}
+
+/* Smartphone */
+@media (max-width: 768px) {
+    .sponsoren-grid {
+        grid-template-columns: 1fr; /* Alle untereinander */
+    }
+}
+
 
 
 
