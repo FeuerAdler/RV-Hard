@@ -1,53 +1,46 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Cookie-Banner nicht auf Datenschutz-Seite anzeigen
     if (window.location.pathname === "/datenschutz.html") return;
 
-    // Funktion zum Laden der externen Inhalte nach Zustimmung
     function loadConsentContent(acceptAll = false) {
-    document.querySelectorAll(".consent-placeholder").forEach(container => {
-        const type = container.dataset.type || "iframe";
-        const src = container.dataset.src;
-        const height = container.dataset.height || "400";
+        document.querySelectorAll(".consent-placeholder").forEach(container => {
+            const type = container.dataset.type || "iframe";
+            const src = container.dataset.src;
+            const height = container.dataset.height || "400";
 
-        // Technisch notwendige Inhalte immer laden, alle Drittanbieter nur bei acceptAll
-        if (!acceptAll && type !== "iframe" && type !== "embedsocial") return;
-        if (!acceptAll && (type === "iframe" || type === "embedsocial")) return; // nur Notwendige laden
+            if (!acceptAll && (type === "iframe" || type === "embedsocial")) return;
 
-        // Platzhalter entfernen
-        container.innerHTML = "";
+            container.innerHTML = "";
 
-        if (type === "iframe") {
-            const iframe = document.createElement("iframe");
-            iframe.src = src;
-            iframe.width = "100%";
-            iframe.height = height;
-            iframe.frameBorder = "0";
-            iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share";
-            iframe.allowFullscreen = true;
-            container.appendChild(iframe);
+            if (type === "iframe") {
+                const iframe = document.createElement("iframe");
+                iframe.src = src;
+                iframe.width = "100%";
+                iframe.height = height;
+                iframe.frameBorder = "0";
+                iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share";
+                iframe.allowFullscreen = true;
+                container.appendChild(iframe);
 
-        } else if (type === "embedsocial") {
-            container.classList.add("embedsocial-hashtag");
-            container.setAttribute("data-ref", container.dataset.ref);
+            } else if (type === "embedsocial") {
+                container.classList.add("embedsocial-hashtag");
+                container.setAttribute("data-ref", container.dataset.ref);
 
-            if (!document.getElementById("EmbedSocialHashtagScript")) {
-                const script = document.createElement("script");
-                script.id = "EmbedSocialHashtagScript";
-                script.src = src;
-                script.async = true;
-                document.head.appendChild(script);
-            } else {
-                if (typeof window.EmbedSocialHashtag !== "undefined") {
-                    window.EmbedSocialHashtag.load();
+                if (!document.getElementById("EmbedSocialHashtagScript")) {
+                    const script = document.createElement("script");
+                    script.id = "EmbedSocialHashtagScript";
+                    script.src = src;
+                    script.async = true;
+                    document.head.appendChild(script);
+                } else {
+                    if (typeof window.EmbedSocialHashtag !== "undefined") {
+                        window.EmbedSocialHashtag.load();
+                    }
                 }
             }
-        }
-    });
-}
+        });
+    }
 
-
-    // Cookie-Banner erstellen, wenn noch keine Wahl getroffen
     if (!localStorage.getItem("cookieChoice")) {
 
         const banner = document.createElement("div");
@@ -61,88 +54,104 @@ document.addEventListener("DOMContentLoaded", function () {
 
         banner.innerHTML = `
             <style>
+                body.cookie-open { overflow: hidden; }
+
                 .cookie-content {
                     background:#fff; color:#333; max-width:600px; width:90%;
-                    padding:2rem; border-radius:10px; text-align:left;
+                    padding:1.5rem; border-radius:10px; text-align:left;
                     box-shadow:0 4px 15px rgba(0,0,0,0.3);
-                    overflow-y:auto; max-height:90%;
+                    max-height:80%;
+                    display:flex;
+                    flex-direction:column;
                 }
-                .cookie-buttons {
-                    display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap;
-                }
-                .cookie-buttons button {
-                    padding:0.7rem 1rem; border:none; border-radius:5px;
-                    font-size:0.95rem; cursor:pointer; flex: 1 1 auto;
-                }
-                #cookie-accept-all { background:#28a745; color:#fff; }
-                #cookie-decline { background:#dc3545; color:#fff; }
-                #cookie-more-link {
-                    color:#ffc107; cursor:pointer; display:block;
-                    margin-top:0.5rem; text-decoration:underline;
-                }
-                #cookie-details {
+                .cookie-text { margin-bottom:1rem; }
+                .cookie-details-container {
                     display:none;
-                    margin-top:1rem;
+                    overflow-y:auto;
+                    max-height:40%;
+                    border:1px solid #ddd;
+                    border-radius:8px;
                     background:#fafafa;
                     padding:1rem;
-                    border-radius:8px;
-                    border:1px solid #ddd;
-                    max-height:300px;
-                    overflow-y:auto;
-                }
-                #cookie-details table {
-                    width:100%;
-                    border-collapse:collapse;
                     margin-bottom:1rem;
                 }
-                #cookie-details th, #cookie-details td {
+                .cookie-details-container table {
+                    width:100%;
+                    border-collapse:collapse;
+                    table-layout: fixed;
+                    word-wrap: break-word;
+                }
+                .cookie-details-container th, .cookie-details-container td {
                     border:1px solid #ccc;
                     padding:0.5rem;
                     text-align:left;
                     font-size:0.9rem;
                 }
-                #cookie-details th { background:#eee; font-weight:bold; }
-                #cookie-details a { color:#ffc107; text-decoration:underline; }
+                .cookie-details-container th { background:#eee; font-weight:bold; }
+                #cookie-more-link { color:#ffc107; cursor:pointer; margin-bottom:0.5rem; display:block; text-decoration:underline; }
+
+                .cookie-buttons {
+                    display:flex; gap:1rem; flex-wrap:wrap; margin-top:auto;
+                }
+                .cookie-buttons button {
+                    flex: 1 1 auto; padding:0.7rem 1rem; border:none; border-radius:5px;
+                    font-size:0.95rem; cursor:pointer; background:#ffc107; color:#000;
+                }
+                .cookie-buttons button:hover { opacity:0.9; }
+
                 @media (max-width: 480px) {
-                    .cookie-content { padding:1rem; width:95%; }
-                    #cookie-details { max-height:200px; }
+                    .cookie-content { width:95%; padding:1rem; max-height:90%; }
+                    .cookie-details-container { max-height:50%; }
+                    .cookie-details-container table, .cookie-details-container thead, .cookie-details-container tbody, .cookie-details-container th, .cookie-details-container td, .cookie-details-container tr {
+                        display:block;
+                    }
+                    .cookie-details-container thead { display:none; }
+                    .cookie-details-container tr { margin-bottom:0.75rem; border-bottom:1px solid #ccc; padding-bottom:0.25rem; }
+                    .cookie-details-container td {
+                        border:none; padding:0.25rem 0; position: relative; padding-left: 50%;
+                    }
+                    .cookie-details-container td:before {
+                        position: absolute; left:0; width:45%; padding-left:0.5rem; font-weight:bold;
+                        white-space: nowrap; content: attr(data-label);
+                    }
                 }
             </style>
             <div class="cookie-content">
-                <p>
+                <div class="cookie-text">
                     <strong>Wir verwenden Cookies.</strong><br>
-                    Einige Cookies sind technisch notwendig für den Betrieb dieser Website. Externe Inhalte (YouTube, RaceResult, Instagram/EmbedSocial) werden nur mit Ihrer Zustimmung geladen.
-                </p>
+                    Einige Cookies sind technisch notwendig für den Betrieb dieser Website. 
+                    Externe Inhalte (YouTube, RaceResult, Instagram/EmbedSocial) werden nur mit Ihrer Zustimmung geladen.
+                </div>
                 <span id="cookie-more-link">Mehr erfahren</span>
-                <div id="cookie-details">
+                <div class="cookie-details-container" id="cookie-details">
                     <table>
                         <thead>
                             <tr><th>Kategorie</th><th>Zweck</th><th>Anbieter</th><th>Speicherdauer</th></tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Notwendig</td>
-                                <td>Grundfunktionen der Website</td>
-                                <td>RV Hard</td>
-                                <td>bis Sitzungsende</td>
+                                <td data-label="Kategorie">Notwendig</td>
+                                <td data-label="Zweck">Grundfunktionen der Website</td>
+                                <td data-label="Anbieter">RV Hard</td>
+                                <td data-label="Speicherdauer">bis Sitzungsende</td>
                             </tr>
                             <tr>
-                                <td>Externe Inhalte</td>
-                                <td>Social-Feed-Einbindung</td>
-                                <td>EmbedSocial</td>
-                                <td>ca. 25 Monate</td>
+                                <td data-label="Kategorie">Externe Inhalte</td>
+                                <td data-label="Zweck">Social-Feed-Einbindung</td>
+                                <td data-label="Anbieter">EmbedSocial</td>
+                                <td data-label="Speicherdauer">ca. 25 Monate</td>
                             </tr>
                             <tr>
-                                <td>Externe Inhalte</td>
-                                <td>Ergebnislisten & Anmeldungen</td>
-                                <td>RaceResult</td>
-                                <td>ca. 23 Monate</td>
+                                <td data-label="Kategorie">Externe Inhalte</td>
+                                <td data-label="Zweck">Ergebnislisten & Anmeldungen</td>
+                                <td data-label="Anbieter">RaceResult</td>
+                                <td data-label="Speicherdauer">ca. 23 Monate</td>
                             </tr>
                             <tr>
-                                <td>Externe Inhalte (Video)</td>
-                                <td>Videoeinbettungen</td>
-                                <td>YouTube / Google</td>
-                                <td>ca. 12 Monate</td>
+                                <td data-label="Kategorie">Externe Inhalte (Video)</td>
+                                <td data-label="Zweck">Videoeinbettungen</td>
+                                <td data-label="Anbieter">YouTube / Google</td>
+                                <td data-label="Speicherdauer">ca. 12 Monate</td>
                             </tr>
                         </tbody>
                     </table>
@@ -155,26 +164,23 @@ document.addEventListener("DOMContentLoaded", function () {
         `;
 
         document.body.appendChild(banner);
+        document.body.classList.add("cookie-open");
 
-        // "Mehr erfahren" toggle
         const moreLink = document.getElementById("cookie-more-link");
         const detailsBox = document.getElementById("cookie-details");
         moreLink.addEventListener("click", function(){
             detailsBox.style.display = (detailsBox.style.display === 'none' || detailsBox.style.display === '') ? 'block' : 'none';
         });
 
-        // Buttons
-        document.getElementById("cookie-accept-all").addEventListener("click", function(){
-            localStorage.setItem("cookieChoice", "accepted");
+        function closeBanner(acceptAll) {
+            localStorage.setItem("cookieChoice", acceptAll ? "accepted" : "declined");
             document.getElementById("cookie-banner")?.remove();
-            loadConsentContent(true); // alle Inhalte laden
-        });
+            document.body.classList.remove("cookie-open");
+            loadConsentContent(acceptAll);
+        }
 
-        document.getElementById("cookie-decline").addEventListener("click", function(){
-            localStorage.setItem("cookieChoice", "declined");
-            document.getElementById("cookie-banner")?.remove();
-            loadConsentContent(false); // nur technisch notwendige Inhalte laden
-        });
+        document.getElementById("cookie-accept-all").addEventListener("click", function(){ closeBanner(true); });
+        document.getElementById("cookie-decline").addEventListener("click", function(){ closeBanner(false); });
 
     } else if (localStorage.getItem("cookieChoice") === "accepted") {
         loadConsentContent(true);
@@ -182,22 +188,16 @@ document.addEventListener("DOMContentLoaded", function () {
         loadConsentContent(false);
     }
 
-    // Delegierter Eventlistener für alle Platzhalter-Buttons
-document.addEventListener("click", function(e) {
-    if (e.target.classList.contains("accept-cookies-btn")) {
-        // Cookie als akzeptiert speichern
-        localStorage.setItem("cookieChoice", "accepted");
+    document.addEventListener("click", function(e) {
+        if (e.target.classList.contains("accept-cookies-btn")) {
+            localStorage.setItem("cookieChoice", "accepted");
+            const banner = document.getElementById("cookie-banner");
+            if (banner) banner.remove();
+            document.body.classList.remove("cookie-open");
+            loadConsentContent(true);
+            const placeholderDiv = e.target.closest(".consent-placeholder")?.querySelector("div");
+            if (placeholderDiv) placeholderDiv.remove();
+        }
+    });
 
-        // Cookie-Banner entfernen, falls noch sichtbar
-        const banner = document.getElementById("cookie-banner");
-        if (banner) banner.remove();
-
-        // Externe Inhalte laden
-        loadConsentContent(true);
-
-        // Platzhalter-Box selbst entfernen
-        const placeholderDiv = e.target.closest(".consent-placeholder")?.querySelector("div");
-        if (placeholderDiv) placeholderDiv.remove();
-    }
-})
 });
