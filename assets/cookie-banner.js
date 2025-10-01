@@ -139,13 +139,13 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <td data-label="Kategorie">Externe Inhalte</td>
                                 <td data-label="Zweck">Social-Feed-Einbindung</td>
                                 <td data-label="Anbieter">EmbedSocial</td>
-                                <td data-label="Speicherdauer">ca. 25 Monate</td>
+                                <td data-label="Speicherdauer">ca. 24 Monate</td>
                             </tr>
                             <tr>
                                 <td data-label="Kategorie">Externe Inhalte</td>
                                 <td data-label="Zweck">Ergebnislisten & Anmeldungen</td>
                                 <td data-label="Anbieter">RaceResult</td>
-                                <td data-label="Speicherdauer">ca. 23 Monate</td>
+                                <td data-label="Speicherdauer">ca. 24 Monate</td>
                             </tr>
                             <tr>
                                 <td data-label="Kategorie">Externe Inhalte (Video)</td>
