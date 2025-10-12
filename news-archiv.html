@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/assets/style.css" />
     <link rel="stylesheet" href="/assets/news/news.css" />
 </head>
+
 <body>
     <header>
         <nav id="navigation-container"></nav>
@@ -26,21 +28,21 @@
     </main>
 
     <footer>
-    <div class="social-icons">
-        <a href="https://www.instagram.com/rv_hard/" target="_blank" aria-label="Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-        </a>
-        <a href="https://www.facebook.com/radvereinhard/" target="_blank" aria-label="Facebook">
-            <i class="fa-brands fa-facebook" aria-hidden="true"></i>
-        </a>
-    </div>
-    <p>&copy; 2024 RV Hard</p>
-    <p>
-        <a href="/impressum.html">Impressum</a> | 
-        <a href="/datenschutz.html">Datenschutz</a> | 
-        <a href="#" onclick="openCookieSettings()">Cookie-Einstellungen</a>
-    </p>
-</footer>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/rv_hard/" target="_blank" aria-label="Instagram">
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.facebook.com/radvereinhard/" target="_blank" aria-label="Facebook">
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 RV Hard</p>
+        <p>
+            <a href="/impressum.html">Impressum</a> |
+            <a href="/datenschutz.html">Datenschutz</a> |
+            <a href="#" onclick="openCookieSettings()">Cookie-Einstellungen</a>
+        </p>
+    </footer>
 
 
     <script src="/assets/navigation-loader.js"></script>
@@ -66,15 +68,22 @@
             const container = document.getElementById('news-archive-list');
             const yearFilter = document.getElementById('year-filter');
 
+            if (!container || !yearFilter) {
+                console.error('News-Container oder Year-Filter nicht gefunden.');
+                return;
+            }
+
             try {
                 const response = await fetch('/data/News/news.json');
+                if (!response.ok) throw new Error(`Fehler beim Laden: ${response.status}`);
                 const news = await response.json();
 
                 // Sortieren nach Datum absteigend
                 news.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-                // Jahre für Filter sammeln
+                // Jahre für Filter sammeln und Option-Liste neu aufbauen (vermeidet Doppelungen)
                 const years = [...new Set(news.map(n => new Date(n.date).getFullYear()))].sort((a, b) => b - a);
+                yearFilter.innerHTML = '<option value="all">Alle Jahre</option>';
                 years.forEach(year => {
                     const option = document.createElement('option');
                     option.value = year;
@@ -82,43 +91,75 @@
                     yearFilter.appendChild(option);
                 });
 
+                // Funktion zum Anzeigen der News
                 function displayNews(filterYear = 'all') {
                     container.innerHTML = '';
-                    const filtered = filterYear === 'all' ? news : news.filter(n => new Date(n.date).getFullYear() == filterYear);
+                    const filtered = filterYear === 'all'
+                        ? news
+                        : news.filter(n => new Date(n.date).getFullYear() == filterYear);
+
+                    if (filtered.length === 0) {
+                        container.innerHTML = '<p>Keine News gefunden.</p>';
+                        return;
+                    }
 
                     filtered.forEach(article => {
-                        const date = new Date(article.date).toLocaleDateString('de-DE', { day: '2-digit', month: 'long', year: 'numeric' });
+                        const date = new Date(article.date).toLocaleDateString('de-DE', {
+                            day: '2-digit', month: 'long', year: 'numeric'
+                        });
+
                         const newsEl = document.createElement('article');
                         newsEl.className = 'news-item';
 
                         newsEl.innerHTML = `
-                            ${article.image ? `<img src="${article.image}" alt="${article.title}" class="news-image">` : ''}
-                            <div class="news-content">
-                                <h3>${article.title}</h3>
-                                <div class="news-meta">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span class="news-date">${date}</span> |
-                                    <span class="news-author">${article.author || ''}</span>
-                                </div>
-                                <p>${article.content}</p>
-                                <a class="weiterlesen-button" href="${article.link || `news/${article.slug}.html`}">Weiterlesen</a>
-                            </div>
-                        `;
+                    ${article.image ? `<img src="${article.image}" alt="${article.title}" class="news-image">` : ''}
+                    <div class="news-content">
+                        <h3>${article.title}</h3>
+                        <div class="news-meta">
+                            <i class="fa-regular fa-calendar-days"></i>
+                            <span class="news-date">${date}</span> |
+                            <span class="news-author">${article.author || ''}</span>
+                        </div>
+                        <p>${article.content}</p>
+                        <a class="weiterlesen-button" href="${article.link || `news/${article.slug}.html`}">Weiterlesen</a>
+                    </div>
+                `;
                         container.appendChild(newsEl);
                     });
                 }
 
-                displayNews();
-                yearFilter.addEventListener('change', () => displayNews(yearFilter.value));
+                // Event: Filter-Änderung speichern und anwenden
+                yearFilter.addEventListener('change', () => {
+                    const selectedYear = yearFilter.value;
+                    try { localStorage.setItem('selectedYear', selectedYear); } catch (e) { /* Safari private mode etc. */ }
+                    displayNews(selectedYear);
+                });
+
+                // Gespeicherten Filter wiederherstellen wenn vorhanden und gültig
+                let savedYear = null;
+                try { savedYear = localStorage.getItem('selectedYear'); } catch (e) { savedYear = null; }
+                if (savedYear && [...yearFilter.options].some(o => o.value === savedYear)) {
+                    yearFilter.value = savedYear;
+                    displayNews(savedYear);
+                } else {
+                    // Standardanzeige
+                    displayNews();
+                    // entferne invaliden savedKey, falls nötig
+                    if (savedYear && ![...yearFilter.options].some(o => o.value === savedYear)) {
+                        try { localStorage.removeItem('selectedYear'); } catch (e) { }
+                    }
+                }
 
             } catch (error) {
                 console.error('Fehler beim Laden der Nachrichten:', error);
                 container.textContent = 'Fehler beim Laden der Nachrichten.';
             }
         }
+
     </script>
     <script src="/assets/header-scroll.js" defer></script>
     <script src="/assets/cookie-banner.js" defer></script>
 
 </body>
+
 </html>
