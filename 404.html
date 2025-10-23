@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - Page Not Found</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      padding: 20px;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 5em;
+      margin-bottom: 0.2em;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 1.5em;
+    }
+
+    .animation-container {
+      position: relative;
+      width: 400px;
+      /* Adjust as needed */
+      height: 200px;
+      /* Adjust as needed */
+      margin: 20px auto;
+      overflow: hidden;
+    }
+
+    .cable {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      transform: translateY(-50%);
+      /* Vertically center */
+      z-index: 1;
+    }
+
+    .biker {
+      position: absolute;
+      top: 50%;
+      left: -200px;
+      /* Start off-screen */
+      width: 150px;
+      /* Adjust size */
+      height: auto;
+      transform: translateY(-50%);
+      z-index: 2;
+      transition: left 2s linear;
+      /* Animation duration and speed */
+    }
+
+    .biker.animate {
+      left: 450px;
+      /* End position - moves across screen */
+    }
+
+    .sparks {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: auto;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      /* Initially hidden */
+      z-index: 3;
+    }
+
+    .sparks.show {
+      opacity: 1;
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1em;
+    }
+
+    a:hover {
+      background-color: #fff;
+      color: #222;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>404</h1>
+    <p>Oops! The page you're looking for can't be found.</p>
+    <div class="animation-container">
+      <img src="images/cable.png" alt="Cable" class="cable">
+      <img src="images/biker.png" alt="Biker" class="biker">
+      <img src="images/sparks.gif" alt="Sparks" class="sparks">
+    </div>
+    <a href="/">Go back home</a>
+  </div>
+
+</body>
+<script>document.addEventListener('DOMContentLoaded', function () {
+    const biker = document.querySelector('.biker');
+    const sparks = document.querySelector('.sparks');
+
+    setTimeout(() => {
+      biker.classList.add('animate');
+
+      setTimeout(() => {
+        sparks.classList.add('show');
+
+        setTimeout(() => {
+          sparks.classList.remove('show');
+        }, 500); // Duration of sparks visibility
+      }, 1500); // Approximate time biker reaches cable
+    }, 500); // Delay before animation starts
+  });
+</script>
+
+</html>
